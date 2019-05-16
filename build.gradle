@@ -25,3 +25,40 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext{
+    minSdkVersion = 21
+    targetSdkVersion = 28
+    compileSdkVersion = 28
+    buildToolsVersion = '28.0.3'
+
+    //App dependencies
+    appcompatVersion = '1.1.0-alpha05'
+    junitVersion = '4.12'
+    runnerVersion = '1.1.1'
+    espressoVersion = '3.1.1'
+    constraintLayoutVersion = '2.0.0-beta1'
+
+    //rx
+    rxJavaVersion = '2.2.4'
+    rxAndroidVersion = '2.1.0'
+    rxJavaAdapterVersion = '2.3.0'
+
+    //glide
+    glideVersion = '4.8.0'
+
+    //retrofit2
+    retrofitVersion = '2.0.0-beta3'
+
+    //okHttp
+    okHttpVersion = '3.12.1'
+
+    //gSon
+    gsonVersion = '2.4.0'
+
+    //lottie
+    lottieVersion = '3.0.0-beta1'
+
+    //google material
+    googleMaterialVersion = '1.1.0-alpha06'
+}

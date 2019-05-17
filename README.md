@@ -13,3 +13,7 @@
 - [회의록](https://docs.google.com/document/d/1jKj9F88EA0vvr41oq_X8tVrLScisV4H8Mzz7Y3JWNPA/edit?usp=sharing)
 - [리뷰 데이타](https://docs.google.com/spreadsheets/d/1VfEKgZt9eNA-BTBp-ewm1pfkqlalfgfnkfH_Y3qqUHc/edit?usp=sharing)
 - [사업 구조도](https://docs.google.com/presentation/d/1RExVCPCvOARzewfxgjEMhUBZpxa6nZiFwxJmBYwOB1c/edit#slide=id.g57762a1b47_18_0)
+
+# Coding convention
+- [Java](https://github.com/ro0opf/It_item/blob/develop/docs/Java.md)
+- [Gradle](https://github.com/ro0opf/It_item/blob/develop/docs/Gradle.md)

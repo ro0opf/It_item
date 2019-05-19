@@ -51,21 +51,7 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         notifyItemRangeChanged(0, items.size());
     }
 
-    public void removeAllItems() {
-        if (dataSet != null) {
-            dataSet.clear();
-            notifyDataSetChanged();
-        }
-    }
-
-    public void removeItem(T item) {
-        int position = getItemPosition(item);
-
-        dataSet.remove(position);
-        notifyItemRemoved(position);
-    }
-
-    public void setItem(List<T> items) {
+    public void setItems(List<T> items) {
         this.dataSet = items;
         notifyDataSetChanged();
     }
@@ -77,5 +63,19 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
     public void removeItem(int position){
         dataSet.remove(position);
         notifyDataSetChanged();
+    }
+
+    public void removeItem(T item) {
+        int position = getItemPosition(item);
+
+        dataSet.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void removeAllItems() {
+        if (dataSet != null) {
+            dataSet.clear();
+            notifyDataSetChanged();
+        }
     }
 }

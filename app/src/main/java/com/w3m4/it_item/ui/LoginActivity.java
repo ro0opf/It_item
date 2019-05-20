@@ -22,7 +22,7 @@ import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
-    SessionCallback callback;
+    private SessionCallback callback;
     private ActivityLoginBinding binding;
 
     @Override

@@ -57,15 +57,6 @@ class KakaoSDKAdapter extends KakaoAdapter {
     // Application이 가지고 있는 정보를 얻기 위한 인터페이스
     @Override
     public IApplicationConfig getApplicationConfig() {
-        return new IApplicationConfig() {
-            public Activity getTopActivity() {
-                return GlobalApplication.getCurrentActivity();
-            }
-
-            @Override
-            public Context getApplicationContext() {
-                return GlobalApplication.getGlobalApplicationContext();
-            }
-        };
+        return () -> GlobalApplication.getGlobalApplicationContext();
     }
 }

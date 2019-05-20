@@ -1,4 +1,4 @@
-package com.w3m4.it_item.util.login;
+package com.w3m4.it_item.common.util.kakao;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,10 +9,6 @@ import com.kakao.auth.IApplicationConfig;
 import com.kakao.auth.ISessionConfig;
 import com.kakao.auth.KakaoAdapter;
 
-/**
- * 로그인 Session을 생성할 때 필요한 옵션을 얻기 위한 클래스
- * @author 이혁
- */
 class KakaoSDKAdapter extends KakaoAdapter {
     // 로그인 시 사용 될, Session의 옵션 설정을 위한 인터페이스 입니다.
     @Override
@@ -27,8 +23,7 @@ class KakaoSDKAdapter extends KakaoAdapter {
                 // KAKAO_ACCOUNT : 웹뷰 다이얼로그를 통한 계정연결 타입
                 // KAKAO_TALK_EXCLUDE_NATIVE_LOGIN : 카카오톡 로그인 타입과 함께 계정생성을 위한 버튼을 함께 제공
                 // KAKAO_LOGIN_ALL : 모든 로그인 방식을 제공
-                return new AuthType[] {AuthType.KAKAO_LOGIN_ALL};
-                // TODO: 현재 카톡 계정 활성화된 폰에서 KAKAO_TALK으로 로그인 되는지 확인
+                return new AuthType[] {AuthType.KAKAO_TALK};
             }
 
             // 로그인 웹뷰에서 pause와 resume시에 타이머를 설정하여, CPU의 소모를 절약 할 지의 여부를 지정합니다.

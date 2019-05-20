@@ -2,39 +2,35 @@ package com.w3m4.it_item.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
+import com.kakao.auth.ApiErrorCode;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
-import com.kakao.usermgmt.LoginButton;
+import com.kakao.network.ErrorResult;
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.MeV2ResponseCallback;
+import com.kakao.usermgmt.response.MeV2Response;
 import com.kakao.util.exception.KakaoException;
 import com.w3m4.it_item.R;
-import com.w3m4.it_item.util.login.KakaoSignupActivity;
+import com.w3m4.it_item.databinding.ActivityLoginBinding;
 
-/**
- * 카카오 계정으로 로그인 수행하는 액티비티
- * @author 이혁
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class LoginActivity extends AppCompatActivity {
 
     SessionCallback callback;
-    private Button btn_custom_login;
-    private LoginButton btn_kakao_login;
+    private ActivityLoginBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        binding.btnKakaoLogin.setOnClickListener(view -> binding.btnKakaoLogin.performClick());
 
-        // 버튼 할당
-        btn_custom_login = findViewById(R.id.btn_custom_login);
-        btn_custom_login.setOnClickListener(view -> btn_kakao_login.performClick());
-        btn_kakao_login = findViewById(R.id.btn_kakao_login);
-
-        // 콜백
         callback = new SessionCallback();
         Session.getCurrentSession().addCallback(callback);
     }
@@ -53,25 +49,38 @@ public class LoginActivity extends AppCompatActivity {
         Session.getCurrentSession().removeCallback(callback);
     }
 
-    protected void redirectSignupActivity() { // 세션 연결 성공 시, SignupActivity로 넘김
-        final Intent intent = new Intent(this, KakaoSignupActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        startActivity(intent);
-        finish();
-    }
-
     private class SessionCallback implements ISessionCallback {
         @Override
         public void onSessionOpened() {
-            redirectSignupActivity();  // 세션 연결 성공 시, redirectSignupActivity() 호출
+            getUserProfile();
         }
 
         @Override
         public void onSessionOpenFailed(KakaoException exception) {
-            if (exception != null) {
-                Log.e("Session Open Failed: ", exception + "");
-            }
-            setContentView(R.layout.activity_login); // 세션 연결 실패 시, 로그인 화면을 다시 불러옴
         }
+    }
+
+    public void getUserProfile() {
+        List<String> keys = new ArrayList<>();
+
+        UserManagement.getInstance().me(keys, new MeV2ResponseCallback() {
+            @Override
+            public void onFailure(ErrorResult errorResult) {
+                if (errorResult.getErrorCode() == ApiErrorCode.AUTH_ERROR_CODE) {
+                    finish();
+                }
+            }
+
+            @Override
+            public void onSessionClosed(ErrorResult errorResult) {
+            }
+
+            @Override
+            public void onSuccess(MeV2Response response) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
+                // TODO: 계정 정보 저장 필요 (스태틱 클래스)
+            }
+        });
     }
 }

@@ -16,7 +16,7 @@
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
-        <activity android:name=".ui.SplashActivity">
+        <activity android:name=".ui.search.SearchActivity">
              <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW"/>
@@ -24,10 +24,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.LoginActivity"/>
-         
-      
-
         <activity android:name=".ui.MainActivity"/>
+        <!--<activity android:name=".ui.search.SearchActivity"/>-->
+
     </application>
 
 </manifest>

@@ -3,4 +3,12 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <!-- it-item color -->
+    <color name="colorMain">#E0E86975</color>
+    <color name="colorFaintMain">#F498A0</color>
+    <color name="colorDeepMain">#E76571</color>
+    <color name="colorDeepWhite">#F1F1F1</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
 </resources>

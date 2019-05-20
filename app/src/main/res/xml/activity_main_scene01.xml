@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        android:id="@+id/transition01"
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@+id/start"
+        motion:duration="400">
+        <KeyFrameSet></KeyFrameSet>
+    </Transition>
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/v_header"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#000000"
+            android:visibility="invisible" />
+        <Constraint
+            android:id="@+id/tv_header_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/colorBlack"
+            android:visibility="invisible"
+            motion:layout_constraintBottom_toBottomOf="@id/v_header"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@id/v_header" />
+
+        <Constraint
+            android:id="@+id/iv_header_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/middle_margin"
+            android:background="@drawable/ic_menu_black_24dp"
+            android:backgroundTint="@color/colorBlack"
+            android:visibility="invisible"
+            motion:layout_constraintBottom_toBottomOf="@id/v_header"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="@id/v_header" />
+        <Constraint
+            android:id="@+id/iv_header_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/middle_margin"
+            android:background="@drawable/ic_search_black_24dp"
+            android:backgroundTint="@color/colorBlack"
+            android:visibility="invisible"
+            motion:layout_constraintBottom_toBottomOf="@id/v_header"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@id/v_header" />
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+
+        <Constraint
+            android:id="@+id/v_header"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#000000"
+            android:visibility="visible" />
+
+
+        <Constraint
+            android:id="@+id/tv_header_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/main_action_title"
+            android:textColor="@color/colorBlack"
+            android:visibility="visible"
+            motion:layout_constraintBottom_toBottomOf="@id/v_header"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@id/v_header" />
+
+        <Constraint
+            android:id="@+id/iv_header_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/middle_margin"
+            android:background="@drawable/ic_menu_black_24dp"
+            android:backgroundTint="@color/colorBlack"
+            android:visibility="visible"
+            motion:layout_constraintBottom_toBottomOf="@id/v_header"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="@id/v_header" />
+
+
+        <Constraint
+            android:id="@+id/iv_header_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/middle_margin"
+            android:background="@drawable/ic_search_black_24dp"
+            android:backgroundTint="@color/colorBlack"
+            android:visibility="visible"
+            motion:layout_constraintBottom_toBottomOf="@id/v_header"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@id/v_header" />
+
+    </ConstraintSet>
+
+</MotionScene>

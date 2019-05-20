@@ -1,4 +1,4 @@
-package com.w3m4.it_item.helper;
+package com.w3m4.it_item.ui.search;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,49 +7,33 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.Dimension;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.w3m4.it_item.R;
+import com.w3m4.it_item.common.BaseRecyclerViewAdapter;
 import com.w3m4.it_item.data.model.Photo;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder>{
-
-    private ArrayList<Photo> photoList;
-    private int itemLayout;
-    private Context context;
-
-    /**
-     * RecyclerAdapter 생성자
-     * */
-    public SearchAdapter(ArrayList<Photo> photoList, int itemLayout, Context context) {
-        this.photoList = photoList;
-        this.itemLayout = itemLayout;
+public class SearchAdapter extends BaseRecyclerViewAdapter<Photo,SearchAdapter.ViewHolder> {
+    Context context;
+    public SearchAdapter(List<Photo> dataSet, Context context) {
+        super(dataSet);
         this.context = context;
     }
 
-    /**
-     * Layout 을 ViewHolder 에 저장
-     * */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(itemLayout, parent, false);
-        return new ViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item, parent, false);
+        ViewHolder viewHolder = new ViewHolder(view);
+        return viewHolder;
     }
 
-    public static int sCorner = 15;
-    public static int sMargin = 2;
-    public static int sBorder = 10;
-    public static String sColor = "#7D9067";
-
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        Photo photo = photoList.get(position);
+    public void onBindView(ViewHolder holder, int position) {
+        Photo photo = getItem(holder.getAdapterPosition());
 
         RequestOptions options = new RequestOptions();
         options.circleCrop();
@@ -58,29 +42,16 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
                 .load(photo.getImage())
                 .apply(options)
                 .into(holder.image);
-
         holder.name.setText(photo.getName());
     }
 
-    /**
-     * List의 크기
-     * */
-    @Override
-    public int getItemCount() {
-        return photoList.size();
-    }
 
-    /**
-     * View 재활용을 위한 ViewHolder
-     * */
-    class ViewHolder extends RecyclerView.ViewHolder{
-
+    static class ViewHolder extends RecyclerView.ViewHolder{
         ImageView image;
         TextView name;
 
         ViewHolder(View itemView) {
             super(itemView);
-
             image = (ImageView) itemView.findViewById(R.id.imageView);
             name = (TextView) itemView.findViewById(R.id.imageName);
         }

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.kakao.auth.ApiErrorCode;
+import com.kakao.auth.AuthType;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
@@ -31,8 +32,12 @@ public class LoginActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         binding.btnKakaoLogin.setOnClickListener(view -> binding.btnKakaoLogin.performClick());
 
-        callback = new SessionCallback();
-        Session.getCurrentSession().addCallback(callback);
+        if (Session.getCurrentSession().checkAndImplicitOpen()) {
+            getUserProfile();
+        } else {
+            callback = new SessionCallback();
+            Session.getCurrentSession().addCallback(callback);
+        }
     }
 
     @Override
@@ -47,17 +52,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Session.getCurrentSession().removeCallback(callback);
-    }
-
-    private class SessionCallback implements ISessionCallback {
-        @Override
-        public void onSessionOpened() {
-            getUserProfile();
-        }
-
-        @Override
-        public void onSessionOpenFailed(KakaoException exception) {
-        }
     }
 
     public void getUserProfile() {
@@ -82,5 +76,16 @@ public class LoginActivity extends AppCompatActivity {
                 // TODO: 계정 정보 저장 필요 (스태틱 클래스)
             }
         });
+    }
+
+    private class SessionCallback implements ISessionCallback {
+        @Override
+        public void onSessionOpened() {
+            getUserProfile();
+        }
+
+        @Override
+        public void onSessionOpenFailed(KakaoException exception) {
+        }
     }
 }

@@ -26,7 +26,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private void initSplashTime() {
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             finish();
         }, SPLASH_TIME);
     }

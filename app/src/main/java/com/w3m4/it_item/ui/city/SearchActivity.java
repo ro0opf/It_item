@@ -1,7 +1,6 @@
-package com.w3m4.it_item.ui.search;
+package com.w3m4.it_item.ui.city;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;

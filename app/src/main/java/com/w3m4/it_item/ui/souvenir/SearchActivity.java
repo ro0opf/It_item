@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import com.w3m4.it_item.R;
 import com.w3m4.it_item.data.Photo;
 import com.w3m4.it_item.databinding.ActivitySearchBinding;
-import com.w3m4.it_item.ui.search.SearchAdapter;
+import com.w3m4.it_item.ui.city.SearchAdapter;
 
 import java.util.ArrayList;
 

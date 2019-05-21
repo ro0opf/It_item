@@ -1,10 +1,7 @@
-package com.w3m4.it_item.ui.search;
+package com.w3m4.it_item.ui.city;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,6 +40,8 @@ public class SearchAdapter extends BaseRecyclerViewAdapter<Photo, SearchAdapter.
                 .apply(options)
                 .into(holder.binding.ivImage);
         holder.binding.tvName.setText(photo.getName());
+
+
     }
 
 

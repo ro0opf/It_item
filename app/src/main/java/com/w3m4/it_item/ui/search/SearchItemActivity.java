@@ -1,4 +1,4 @@
-package com.w3m4.it_item.ui.menu_souvenir;
+package com.w3m4.it_item.ui.search;
 
 import android.os.Bundle;
 import android.widget.EditText;
@@ -9,14 +9,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.w3m4.it_item.R;
 import com.w3m4.it_item.data.model.Photo;
-import com.w3m4.it_item.databinding.ActivityCitySearchBinding;
-import com.w3m4.it_item.ui.helper.SouvenirAdapter;
+import com.w3m4.it_item.databinding.ActivitySearchItemBinding;
 
 import java.util.ArrayList;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchItemActivity extends AppCompatActivity {
 
-    private ActivityCitySearchBinding binding;
+    private ActivitySearchItemBinding binding;
     private ArrayList<Photo> photoArrayList = new ArrayList<>();
 
     private EditText edtSearch;
@@ -24,9 +23,9 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_city_search);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_search_city);
 
-        edtSearch=(EditText)findViewById(R.id.edt_search);
+        edtSearch = (EditText) findViewById(R.id.edt_search);
         edtSearch.setHint("구매할 기념품을 선택해주세요.");
 
         initData();
@@ -40,12 +39,11 @@ public class SearchActivity extends AppCompatActivity {
         photoArrayList.add(new Photo(R.drawable.ic_cat, "지역 특산품"));
         photoArrayList.add(new Photo(R.drawable.ic_robot, "장난감"));
 
-        SouvenirAdapter adapter = new SouvenirAdapter(this, photoArrayList);
+        mItemAdapter adapter = new mItemAdapter(this, photoArrayList);
         GridLayoutManager manager = new GridLayoutManager(this, 2);
 
-        binding.rcv.setAdapter(adapter);
-        binding.rcv.setLayoutManager(manager);
-
+//        binding.rcv.setAdapter(adapter);
+//        binding.rcv.setLayoutManager(manager);
     }
 
 

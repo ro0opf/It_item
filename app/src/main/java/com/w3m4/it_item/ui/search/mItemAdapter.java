@@ -1,4 +1,4 @@
-package com.w3m4.it_item.ui.helper;
+package com.w3m4.it_item.ui.search;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,17 +15,16 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 import com.w3m4.it_item.common.BaseRecyclerViewAdapter;
-import com.w3m4.it_item.data.City;
 import com.w3m4.it_item.data.model.Photo;
 import com.w3m4.it_item.databinding.ItemSearchBinding;
 
 import java.util.List;
 
-public class SouvenirAdapter extends BaseRecyclerViewAdapter<Photo, SouvenirAdapter.ViewHolder> {
+public class mItemAdapter extends BaseRecyclerViewAdapter<Photo, mItemAdapter.ViewHolder> {
     RequestManager requestManager;
     private Context context;
 
-    public SouvenirAdapter(Context context, List<Photo> dataSet)
+    public mItemAdapter(Context context, List<Photo> dataSet)
     {
         super(dataSet);
         this.context=context;
@@ -59,32 +58,6 @@ public class SouvenirAdapter extends BaseRecyclerViewAdapter<Photo, SouvenirAdap
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
                 ((Activity)context).startActivityForResult(intent, position);
-
-                City city=City.valueOf(position);
-                if(city==City.TOKYO)
-                {
-
-
-
-                }else if(city==City.OSAKA)
-                {
-
-                }else if(city==City.KYOTO)
-                {
-
-                }else if(city==City.KYUSU)
-                {
-
-                }else if(city==City.SAPPORO)
-                {
-
-                }else if(city==City.HOKKAIDO)
-                {
-
-                }
-
-
-
             }
         });
     }

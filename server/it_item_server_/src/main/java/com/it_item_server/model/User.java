@@ -4,10 +4,18 @@ import java.sql.Date;
 
 public class User {
 
-	private String u_id, u_gender, u_nickname, u_personality, u_memberDegree;
+	private String u_id, u_gender, u_nickname, u_personality, u_memberDegree, u_email;
 	private int u_age;
 	private Date u_date;
 	private double u_point;
+
+	public String getU_email() {
+		return u_email;
+	}
+
+	public void setU_email(String u_email) {
+		this.u_email = u_email;
+	}
 
 	public String getU_id() {
 		return u_id;

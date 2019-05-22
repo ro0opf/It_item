@@ -18,6 +18,7 @@
             android:id="@+id/nsv_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:descendantFocusability="blocksDescendants"
             android:background="@color/colorDeepWhite"
             android:fillViewport="true"
             android:overScrollMode="never">
@@ -31,7 +32,7 @@
                     android:id="@+id/v_bg"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:background="@color/colorMain"
+                    android:background="@drawable/main_background"
                     app:layout_constraintDimensionRatio="1:1.6"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

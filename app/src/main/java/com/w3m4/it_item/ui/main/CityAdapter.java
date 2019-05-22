@@ -34,6 +34,8 @@ public class CityAdapter extends BaseRecyclerViewAdapter<City, CityAdapter.ViewH
 
             holder.binding.ivSearch.setVisibility(View.GONE);
             holder.binding.tvMain.setText(getItem(position).getName());
+        }else{
+            holder.binding.vBg.setVisibility(View.INVISIBLE);
         }
     }
 

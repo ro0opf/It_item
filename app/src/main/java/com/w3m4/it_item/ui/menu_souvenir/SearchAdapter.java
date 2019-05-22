@@ -1,21 +1,18 @@
 package com.w3m4.it_item.ui.search;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
-import com.w3m4.it_item.R;
 import com.w3m4.it_item.common.BaseRecyclerViewAdapter;
-import com.w3m4.it_item.data.Photo;
+import com.w3m4.it_item.data.model.Photo;
 import com.w3m4.it_item.databinding.ItemSearchBinding;
 
 import java.util.List;
@@ -23,6 +20,7 @@ import java.util.List;
 public class SearchAdapter extends BaseRecyclerViewAdapter<Photo, SearchAdapter.ViewHolder>{
     RequestManager requestManager;
 
+    public LiveData<Integer> dd;
     public SearchAdapter(List<Photo> dataSet) {
         super(dataSet);
     }

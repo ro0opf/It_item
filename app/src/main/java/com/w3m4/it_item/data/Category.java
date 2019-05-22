@@ -1,21 +1,39 @@
 package com.w3m4.it_item.data;
 
 public class Category {
-    private int bg;
+    private String code;
     private String name;
+    private int img;
+    private boolean isSelected = false;
 
-    public Category(int bg, String name) {
-        this.bg = bg;
+    public Category(String code, String name, int img) {
+        this.code = code;
         this.name = name;
+        this.img = img;
     }
 
-    public int getBg() {
-        return bg;
+    public boolean isSelected() {
+        return isSelected;
     }
 
-    public void setBg(int bg) {
-        this.bg = bg;
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
+
+    public int getImg() {
+        return img;
+    }
+
+    public void setImg(int img) {
+        this.img = img;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
 
     public String getName() {
         return name;

@@ -1,12 +1,7 @@
 package com.w3m4.it_item.data.model.list;
 
-import com.google.gson.JsonObject;
-import com.kakao.usermgmt.response.model.User;
-import com.w3m4.it_item.data.mList;
 import com.w3m4.it_item.data.mLists;
 import com.w3m4.it_item.data.model.ServiceGenerator;
-
-import java.util.List;
 
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;

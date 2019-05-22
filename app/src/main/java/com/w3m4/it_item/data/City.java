@@ -20,6 +20,7 @@ public class City {
         this.name = name;
     }
 
+
     public City(int bg, String name) {
         this.bg = bg;
         this.name = name;

@@ -13,9 +13,12 @@ import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeV2ResponseCallback;
 import com.kakao.usermgmt.response.MeV2Response;
+import com.kakao.util.OptionalBoolean;
 import com.kakao.util.exception.KakaoException;
 import com.w3m4.it_item.R;
+import com.w3m4.it_item.data.Me;
 import com.w3m4.it_item.databinding.ActivityLoginBinding;
+import com.w3m4.it_item.ui.interest.InterestActivity;
 import com.w3m4.it_item.ui.main.MainActivity;
 
 import java.util.ArrayList;
@@ -70,9 +73,30 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(MeV2Response response) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                finish();
-                // TODO: 계정 정보 저장 필요 (스태틱 클래스)
+                // Set Me Instance
+                Me.getInstance().setId(response.getId() + "");
+                Me.getInstance().setNickname(response.getNickname());
+                Me.getInstance().setThumbnail(response.getThumbnailImagePath());
+                if (response.getKakaoAccount().getGender() != null) {
+                    Me.getInstance().setGender(response.getKakaoAccount().getGender().toString());
+                } else {
+                    // TODO: Gender Set
+                }
+                if (response.getKakaoAccount().getAgeRange() != null) {
+                    Me.getInstance().setAgeRange(response.getKakaoAccount().getAgeRange().toString());
+                } else {
+                    // TODO: AgeRange Set
+                }
+
+                // TODO: Set Accumulated Point, Current Point, Degree
+
+                if (response.hasSignedUp() == OptionalBoolean.TRUE) { // TODO: 신규 회원 판별 후 메인 액티비티 or 관심 등록 액티비티로
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    finish();
+                } else {
+                    startActivity(new Intent(getApplicationContext(), InterestActivity.class));
+                    finish();
+                }
             }
         });
     }

@@ -29,7 +29,7 @@ public class ListAdapter extends BaseRecyclerViewAdapter<mList, ListAdapter.View
     public void onBindView(ListAdapter.ViewHolder holder, int position) {
         holder.binding.tvTitle.setText(getItem(position).getTitle());
         requestManager.load(R.drawable.kyoto_main)
-                .apply(RequestOptions.bitmapTransform(new RoundedCorners(35)))
+                .apply(RequestOptions.bitmapTransform(new RoundedCorners(55)))
                 .into(holder.binding.ivImage);
     }
 

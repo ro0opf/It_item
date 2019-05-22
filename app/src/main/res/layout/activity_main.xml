@@ -10,20 +10,22 @@
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/ml_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layoutDescription="@xml/activity_main_scene01">
 
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nsv_main"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:fillViewport="true"
+            android:background="@color/colorDeepWhite">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorDeepWhite">
+                android:layout_height="wrap_content">
 
                 <View
                     android:id="@+id/v_bg"
@@ -153,9 +155,11 @@
                     app:layout_constraintWidth_percent="0.35" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="0dp"
-                    android:layout_height="1000dp"
+                    android:id="@+id/rcv_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
+                    android:nestedScrollingEnabled="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/v_left2"

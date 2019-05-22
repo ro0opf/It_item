@@ -16,17 +16,22 @@
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
+
         <activity android:name=".ui.SplashActivity">
-             <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".ui.LoginActivity"/>
-        <activity android:name=".ui.main.MainActivity"/>
+
+        <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.interest.InterestActivity"/>
-        <activity android:name=".ui.city.SearchActivity" />
+        <activity android:name=".ui.main.MainActivity" />
+        <activity android:name=".ui.main.ConfigActivity"  android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name=".ui.search.SearchCityActivity" />
+        <activity android:name=".ui.search.SearchCategoryActivity" />
 
     </application>
 

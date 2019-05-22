@@ -1,4 +1,4 @@
-package com.w3m4.it_item.ui.city;
+package com.w3m4.it_item.ui.search;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -10,38 +10,33 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 import com.w3m4.it_item.common.BaseRecyclerViewAdapter;
-import com.w3m4.it_item.data.Photo;
+import com.w3m4.it_item.data.City;
 import com.w3m4.it_item.databinding.ItemSearchBinding;
 
 import java.util.List;
 
-public class SearchAdapter extends BaseRecyclerViewAdapter<Photo, SearchAdapter.ViewHolder> {
+public class mCityAdapter extends BaseRecyclerViewAdapter<City, mCityAdapter.ViewHolder> {
     RequestManager requestManager;
 
-    public SearchAdapter(List<Photo> dataSet) {
+    public mCityAdapter(List<City> dataSet)
+    {
         super(dataSet);
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemSearchBinding binding = ItemSearchBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        requestManager = Glide.with(parent.getContext());
-        return new ViewHolder(binding);
+    public void onBindView(ViewHolder holder, int position) {
+        holder.binding.tvName.setText(getItem(position).getName());
+        requestManager.load(getItem(position).getBg())
+                .apply(RequestOptions.circleCropTransform())
+                .into(holder.binding.ivImage);
     }
 
     @Override
-    public void onBindView(ViewHolder holder, int position) {
-        Photo photo = getItem(holder.getAdapterPosition());
+    public mCityAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        ItemSearchBinding binding = ItemSearchBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        requestManager = Glide.with(parent.getContext());
 
-        RequestOptions options = new RequestOptions();
-        options.circleCrop();
-
-        requestManager.load(photo.getImage())
-                .apply(options)
-                .into(holder.binding.ivImage);
-        holder.binding.tvName.setText(photo.getName());
-
-
+        return new ViewHolder(binding);
     }
 
 

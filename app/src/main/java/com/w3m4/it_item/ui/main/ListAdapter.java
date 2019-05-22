@@ -1,7 +1,6 @@
 package com.w3m4.it_item.ui.main;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -28,8 +27,8 @@ public class ListAdapter extends BaseRecyclerViewAdapter<mList, ListAdapter.View
     @Override
     public void onBindView(ListAdapter.ViewHolder holder, int position) {
         holder.binding.tvTitle.setText(getItem(position).getTitle());
-        requestManager.load(R.drawable.kyoto_main)
-                .apply(RequestOptions.bitmapTransform(new RoundedCorners(35)))
+        requestManager.load(R.drawable.ic_city_kyoto)
+                .apply(RequestOptions.bitmapTransform(new RoundedCorners(55)))
                 .into(holder.binding.ivImage);
     }
 

@@ -4,12 +4,12 @@
 
     <Transition
         android:id="@+id/transition01"
-        motion:constraintSetEnd="@+id/end"
-        motion:constraintSetStart="@+id/start"
+        motion:constraintSetEnd="@+id/header_end"
+        motion:constraintSetStart="@+id/header_start"
         motion:duration="400">
         <KeyFrameSet></KeyFrameSet>
     </Transition>
-    <ConstraintSet android:id="@+id/start">
+    <ConstraintSet android:id="@+id/header_start">
         <Constraint
             android:id="@+id/v_header"
             android:layout_width="match_parent"
@@ -53,7 +53,7 @@
 
     </ConstraintSet>
 
-    <ConstraintSet android:id="@+id/end">
+    <ConstraintSet android:id="@+id/header_end">
 
         <Constraint
             android:id="@+id/v_header"
@@ -102,5 +102,6 @@
             motion:layout_constraintTop_toTopOf="@id/v_header" />
 
     </ConstraintSet>
+
 
 </MotionScene>

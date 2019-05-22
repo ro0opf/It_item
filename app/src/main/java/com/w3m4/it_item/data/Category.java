@@ -3,13 +3,13 @@ package com.w3m4.it_item.data;
 public class Category {
     private String code;
     private String name;
-    private Photo photo;
+    private int img;
     private boolean isSelected = false;
 
-    public Category(String code, String name, Photo photo) {
+    public Category(String code, String name, int img) {
         this.code = code;
         this.name = name;
-        this.photo = photo;
+        this.img = img;
     }
 
     public boolean isSelected() {
@@ -20,12 +20,12 @@ public class Category {
         isSelected = selected;
     }
 
-    public Photo getPhoto() {
-        return photo;
+    public int getImg() {
+        return img;
     }
 
-    public void setPhoto(Photo photo) {
-        this.photo = photo;
+    public void setImg(int img) {
+        this.img = img;
     }
 
     public String getCode() {
@@ -34,7 +34,6 @@ public class Category {
 
     public void setCode(String code) {
         this.code = code;
-    }
 
     public String getName() {
         return name;

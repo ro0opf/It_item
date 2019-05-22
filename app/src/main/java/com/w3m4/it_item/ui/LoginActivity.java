@@ -2,24 +2,21 @@ package com.w3m4.it_item.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.kakao.auth.ApiErrorCode;
+import com.kakao.auth.AuthType;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeV2ResponseCallback;
 import com.kakao.usermgmt.response.MeV2Response;
-import com.kakao.util.OptionalBoolean;
 import com.kakao.util.exception.KakaoException;
 import com.w3m4.it_item.R;
-import com.w3m4.it_item.data.Me;
 import com.w3m4.it_item.databinding.ActivityLoginBinding;
-import com.w3m4.it_item.ui.interest.InterestActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
-        binding.btnKakaoLogin.setOnClickListener(view -> binding.btnKakaoLogin.performClick());
 
         if (Session.getCurrentSession().checkAndImplicitOpen()) {
             getUserProfile();
@@ -59,11 +55,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public void getUserProfile() {
         List<String> keys = new ArrayList<>();
-        keys.add("properties.nickname");
-        keys.add("properties.thumbnail_image");
-        keys.add("kakao_account.email");
-        keys.add("kakao_account.age_range");
-        keys.add("kakao_account.gender");
 
         UserManagement.getInstance().me(keys, new MeV2ResponseCallback() {
             @Override

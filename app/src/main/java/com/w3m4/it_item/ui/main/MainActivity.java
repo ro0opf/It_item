@@ -43,17 +43,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fetchCityData() {
-        binding.vLeft2.setOnClickListener(v -> {
-            disposable.add(ListRepo.getInstance().getList("hyyyyjin")
-                    .subscribe(data->{
-                                listAdapter.setItems(data.getLists());
-                                Log.e("#$Main", data.getLists().size()+ "");
-                            }, e->{
-                                Log.e("#$Main", e.getMessage());
-                            }
-                    )
-            );
-        });
+        disposable.add(ListRepo.getInstance().getList("hyyyyjin")
+                .subscribe(data->{
+                            listAdapter.setItems(data.getLists());
+                        }, e->{
+                            e.printStackTrace();
+                        }
+                )
+        );
     }
 
     void initMotionLayout() {

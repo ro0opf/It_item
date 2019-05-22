@@ -15,9 +15,4 @@ public interface ListAPI {
     Single<mLists>getList(
             @Query("id") String userId
     );
-
-    @GET("mainPage")
-    Single<JsonObject> getList2(
-            @Query("id") String userId
-    );
 }

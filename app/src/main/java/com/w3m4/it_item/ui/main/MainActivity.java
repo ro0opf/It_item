@@ -61,7 +61,12 @@ public class MainActivity extends AppCompatActivity {
     private void initCategoryRcv(RecyclerView rcv) {
         categoryAdapter = new CategoryAdapter(new ArrayList<>());
         rcv.setHasFixedSize(true);
-        rcv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        rcv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
         rcv.setAdapter(categoryAdapter);
     }
 
@@ -78,7 +83,12 @@ public class MainActivity extends AppCompatActivity {
     private void initCityRcv(RecyclerView rcv) {
         cityAdapter = new CityAdapter(new ArrayList<>());
         rcv.setHasFixedSize(true);
-        rcv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        rcv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
         rcv.setAdapter(cityAdapter);
     }
 

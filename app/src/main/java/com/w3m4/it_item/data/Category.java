@@ -4,11 +4,20 @@ public class Category {
     private String code;
     private String name;
     private Photo photo;
+    private boolean isSelected = false;
 
     public Category(String code, String name, Photo photo) {
         this.code = code;
         this.name = name;
         this.photo = photo;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 
     public Photo getPhoto() {

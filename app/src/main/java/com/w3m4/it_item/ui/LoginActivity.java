@@ -7,16 +7,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.kakao.auth.ApiErrorCode;
-import com.kakao.auth.AuthType;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeV2ResponseCallback;
 import com.kakao.usermgmt.response.MeV2Response;
+import com.kakao.util.OptionalBoolean;
 import com.kakao.util.exception.KakaoException;
 import com.w3m4.it_item.R;
+import com.w3m4.it_item.data.Me;
 import com.w3m4.it_item.databinding.ActivityLoginBinding;
+import com.w3m4.it_item.ui.interest.InterestActivity;
+import com.w3m4.it_item.ui.main.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,8 +73,10 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(MeV2Response response) {
+                // Set Me Instance
                 Me.getInstance().setId(response.getId() + "");
                 Me.getInstance().setNickname(response.getNickname());
+                Me.getInstance().setThumbnail(response.getThumbnailImagePath());
                 if (response.getKakaoAccount().getGender() != null) {
                     Me.getInstance().setGender(response.getKakaoAccount().getGender().toString());
                 } else {
@@ -85,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 // TODO: Set Accumulated Point, Current Point, Degree
 
-                if (response.hasSignedUp() == OptionalBoolean.TRUE) { // TODO: 회원 아이디가 디비에 있는지
+                if (response.hasSignedUp() == OptionalBoolean.TRUE) { // TODO: 신규 회원 판별 후 메인 액티비티 or 관심 등록 액티비티로
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
                 } else {

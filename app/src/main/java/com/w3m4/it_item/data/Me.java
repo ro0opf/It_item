@@ -1,22 +1,32 @@
 package com.w3m4.it_item.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Me {
     private String id;
     private String nickname;
+    private String thumbnail;
     private String gender;
     private String ageRange;
     private int accuPoint;
     private int curPoint;
     private UserDegree degree;
-
-    public Me(String id, String nickname, String gender, String ageRange, int accuPoint, int curPoint, UserDegree degree) {
+    private List<String> interestCategories = new ArrayList<String>();
+    private List<String> interestCities = new ArrayList<String>();
+    public Me(String id, String nickname, String thumbnail, String gender, String ageRange,
+              int accuPoint, int curPoint, UserDegree degree,
+              ArrayList<String> categories, ArrayList<String> cities) {
         this.id = id;
         this.nickname = nickname;
+        this.thumbnail = thumbnail;
         this.gender = gender;
         this.ageRange = ageRange;
         this.accuPoint = accuPoint;
         this.curPoint = curPoint;
         this.degree = degree;
+        interestCategories = categories;
+        interestCities = cities;
     }
 
     public Me() {
@@ -25,6 +35,30 @@ public class Me {
 
     public static Me getInstance() {
         return LazyInit.INSTANCE;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
+    public List<String> getInterestCities() {
+        return interestCities;
+    }
+
+    public void setInterestCities(List<String> interestCities) {
+        this.interestCities = interestCities;
+    }
+
+    public List<String> getInterestCategories() {
+        return interestCategories;
+    }
+
+    public void setInterestCategories(List<String> interestCategories) {
+        this.interestCategories = interestCategories;
     }
 
     public String getId() {

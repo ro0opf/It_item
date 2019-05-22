@@ -25,8 +25,8 @@
         </activity>
         <activity android:name=".ui.LoginActivity"/>
         <activity android:name=".ui.main.MainActivity"/>
-        <activity android:name=".ui.search.SearchActivity"/>
-        <activity android:name=".ui.souvenir.SearchActivity" />
+        <activity android:name=".ui.interest.InterestActivity"/>
+        <activity android:name=".ui.city.SearchActivity" />
 
     </application>
 

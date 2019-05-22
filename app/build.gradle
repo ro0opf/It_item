@@ -58,6 +58,9 @@ dependencies {
     //android material
     implementation "com.google.android.material:material:$googleMaterialVersion"
 
+    //gson
+    implementation "com.squareup.retrofit2:converter-gson:$gsonVersion"
+
     //kakao account, talk
     implementation group: 'com.kakao.sdk', name: 'usermgmt', version: project.KAKAO_SDK_VERSION
     implementation group: 'com.kakao.sdk', name: 'kakaotalk', version: project.KAKAO_SDK_VERSION

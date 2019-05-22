@@ -40,6 +40,17 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         notifyItemRangeInserted(currentSize, items.size());
     }
 
+    public void addItem(T item) {
+        if (dataSet == null) {
+            dataSet = new ArrayList<>();
+        }
+
+        int currentSize = getItemCount();
+        dataSet.add(item);
+
+        notifyItemRangeInserted(currentSize, dataSet.size());
+    }
+
     public void updateItems(List<T> items) {
         if (dataSet == null) {
             dataSet = new ArrayList<>();
@@ -56,11 +67,11 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         notifyDataSetChanged();
     }
 
-    public int getItemPosition(T item){
+    public int getItemPosition(T item) {
         return dataSet.indexOf(item);
     }
 
-    public void removeItem(int position){
+    public void removeItem(int position) {
         dataSet.remove(position);
         notifyDataSetChanged();
     }

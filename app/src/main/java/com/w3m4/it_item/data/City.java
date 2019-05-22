@@ -1,32 +1,27 @@
 package com.w3m4.it_item.data;
 
-import java.util.HashMap;
-import java.util.Map;
+public class City {
+    private int bg;
+    private String name;
 
-public enum City {
-
-    TOKYO(0),
-    OSAKA(1),
-    KYOTO(2),
-    KYUSU(3),
-    SAPPORO(4),
-    HOKKAIDO(5);
-
-    private int value;
-    private static Map map = new HashMap<>();
-
-    City(int value) {
-        this.value = value;
+    public int getBg() {
+        return bg;
     }
 
-    public static City valueOf(int pageType) {
-        return (City) map.get(pageType);
+    public void setBg(int bg) {
+        this.bg = bg;
     }
 
-    public int getValue() {
-        return value;
+    public String getName() {
+        return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
-
+    public City(int bg, String name) {
+        this.bg = bg;
+        this.name = name;
+    }
 }

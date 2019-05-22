@@ -11,4 +11,5 @@
     <color name="colorDeepWhite">#F1F1F1</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorFaintBlack">#888888</color>
 </resources>

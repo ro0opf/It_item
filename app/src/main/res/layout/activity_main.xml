@@ -151,6 +151,7 @@
                     android:layout_height="0dp"
                     android:layout_marginTop="50dp"
                     android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
                     android:orientation="horizontal"
                     android:paddingStart="50dp"
                     android:paddingEnd="40dp"
@@ -161,7 +162,27 @@
                     app:layout_constraintTop_toBottomOf="@id/v_city"
                     app:layout_constraintWidth_default="percent"
                     app:layout_constraintWidth_percent="1"
-                    tools:listitem="@layout/item_city" />
+                    tools:listitem="@layout/item_main_city" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_category"
+                    android:visibility="invisible"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="50dp"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="horizontal"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="40dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintDimensionRatio="1:0.37"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/v_city"
+                    app:layout_constraintWidth_default="percent"
+                    app:layout_constraintWidth_percent="1"
+                    tools:listitem="@layout/item_main_city" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcv_list"
@@ -175,8 +196,6 @@
                     app:layout_constraintWidth_percent="0.8" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-
         </androidx.core.widget.NestedScrollView>
 
 
@@ -225,5 +244,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/v_header" />
 
+        <View
+            android:id="@+id/v_act"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#57000000"/>
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

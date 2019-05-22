@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.w3m4.it_item.R;
 import com.w3m4.it_item.data.model.Photo;
-import com.w3m4.it_item.ui.helper.SouvenirAdapter;
+import com.w3m4.it_item.ui.search.mItemAdapter;
 
 import java.util.ArrayList;
 
@@ -42,7 +42,7 @@ public class SouvenirFragment extends Fragment {
         photoArrayList.add(new Photo(R.drawable.ic_cat, "지역 특산품"));
         photoArrayList.add(new Photo(R.drawable.ic_robot, "장난감"));
 
-        SouvenirAdapter adapter = new SouvenirAdapter(getActivity(), photoArrayList);
+        mItemAdapter adapter = new mItemAdapter(getActivity(), photoArrayList);
         GridLayoutManager manager = new GridLayoutManager(getActivity(), 2);
 
         rcv.setAdapter(adapter);

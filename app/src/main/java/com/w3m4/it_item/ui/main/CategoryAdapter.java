@@ -17,7 +17,7 @@ import com.w3m4.it_item.R;
 import com.w3m4.it_item.common.BaseRecyclerViewAdapter;
 import com.w3m4.it_item.data.Category;
 import com.w3m4.it_item.databinding.ItemMainCategoryBinding;
-import com.w3m4.it_item.ui.search.SearchItemActivity;
+import com.w3m4.it_item.ui.search.SearchCategoryActivity;
 
 import java.util.List;
 
@@ -40,7 +40,7 @@ public class CategoryAdapter extends BaseRecyclerViewAdapter<Category, CategoryA
                     .into(holder.binding.ivBg);
 
             holder.binding.ivSearch.setVisibility(View.GONE);
-            holder.binding.tvMain.setText(getItem(position).getName());
+            holder.binding.tvMain.setVisibility(View.GONE);
         }else{
             requestManager.load(R.drawable.square)
                     .apply(requestOptions)
@@ -56,7 +56,7 @@ public class CategoryAdapter extends BaseRecyclerViewAdapter<Category, CategoryA
         ViewHolder viewHolder = new ViewHolder(binding);
         viewHolder.binding.clMain.setOnClickListener(v -> {
             if (viewHolder.getAdapterPosition() == 0) {
-                parent.getContext().startActivity(new Intent(parent.getContext(), SearchItemActivity.class));
+                parent.getContext().startActivity(new Intent(parent.getContext(), SearchCategoryActivity.class));
             }
         });
         return viewHolder;

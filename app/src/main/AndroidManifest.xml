@@ -31,7 +31,7 @@
         <activity android:name=".ui.main.MainActivity" />
         <activity android:name=".ui.main.ConfigActivity"  android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <activity android:name=".ui.search.SearchCityActivity" />
-        <activity android:name=".ui.search.SearchItemActivity" />
+        <activity android:name=".ui.search.SearchCategoryActivity" />
 
     </application>
 

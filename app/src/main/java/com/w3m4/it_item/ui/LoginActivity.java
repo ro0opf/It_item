@@ -2,21 +2,24 @@ package com.w3m4.it_item.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.kakao.auth.ApiErrorCode;
-import com.kakao.auth.AuthType;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeV2ResponseCallback;
 import com.kakao.usermgmt.response.MeV2Response;
+import com.kakao.util.OptionalBoolean;
 import com.kakao.util.exception.KakaoException;
 import com.w3m4.it_item.R;
+import com.w3m4.it_item.data.Me;
 import com.w3m4.it_item.databinding.ActivityLoginBinding;
+import com.w3m4.it_item.ui.interest.InterestActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +59,11 @@ public class LoginActivity extends AppCompatActivity {
 
     public void getUserProfile() {
         List<String> keys = new ArrayList<>();
+        keys.add("properties.nickname");
+        keys.add("properties.thumbnail_image");
+        keys.add("kakao_account.email");
+        keys.add("kakao_account.age_range");
+        keys.add("kakao_account.gender");
 
         UserManagement.getInstance().me(keys, new MeV2ResponseCallback() {
             @Override
@@ -71,9 +79,28 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(MeV2Response response) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                finish();
-                // TODO: 계정 정보 저장 필요 (스태틱 클래스)
+                Me.getInstance().setId(response.getId() + "");
+                Me.getInstance().setNickname(response.getNickname());
+                if (response.getKakaoAccount().getGender() != null) {
+                    Me.getInstance().setGender(response.getKakaoAccount().getGender().toString());
+                } else {
+                    // TODO: Gender Set
+                }
+                if (response.getKakaoAccount().getAgeRange() != null) {
+                    Me.getInstance().setAgeRange(response.getKakaoAccount().getAgeRange().toString());
+                } else {
+                    // TODO: AgeRange Set
+                }
+
+                // TODO: Set Accumulated Point, Current Point, Degree
+
+                if (response.hasSignedUp() == OptionalBoolean.TRUE) { // TODO: 회원 아이디가 디비에 있는지
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    finish();
+                } else {
+                    startActivity(new Intent(getApplicationContext(), InterestActivity.class));
+                    finish();
+                }
             }
         });
     }

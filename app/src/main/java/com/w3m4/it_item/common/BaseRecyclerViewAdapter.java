@@ -56,11 +56,11 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         notifyDataSetChanged();
     }
 
-    public int getItemPosition(T item){
+    public int getItemPosition(T item) {
         return dataSet.indexOf(item);
     }
 
-    public void removeItem(int position){
+    public void removeItem(int position) {
         dataSet.remove(position);
         notifyDataSetChanged();
     }

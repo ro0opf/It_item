@@ -13,13 +13,4 @@ public class MeRepo {
         private static final MeRepo INSTANCE = new MeRepo();
     }
 
-    public String getUserId(String userId) {
-        return service.getUserId(userId);
-    }
-
-//    public Single<mLists> getList(String userId) {
-//        return service.getList(userId)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread());
-//    }
 }

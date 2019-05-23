@@ -18,8 +18,7 @@
             app:layout_constraintDimensionRatio="1:0.5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintDimensionRatio="1:0.5"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_user"
@@ -30,6 +29,7 @@
             android:text=" 님의 리스트"
             android:textColor="@color/colorBlack"
             android:textSize="15dp"
+            app:layout_constraintStart_toStartOf="@id/v_bg"
             app:layout_constraintTop_toTopOf="@id/v_bg" />
 
         <TextView
@@ -56,7 +56,6 @@
             android:id="@+id/iv_item1"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@drawable/ic_no_photo"
             app:layout_constraintBottom_toTopOf="@id/tv_num"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@id/iv_item2"
@@ -69,7 +68,6 @@
             android:id="@+id/iv_item2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@drawable/ic_no_photo"
             app:layout_constraintBottom_toTopOf="@id/tv_num"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@id/iv_item3"
@@ -82,7 +80,6 @@
             android:id="@+id/iv_item3"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@drawable/ic_no_photo"
             app:layout_constraintBottom_toTopOf="@id/tv_num"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"

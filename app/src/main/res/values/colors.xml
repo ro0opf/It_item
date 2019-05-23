@@ -19,4 +19,5 @@
     <color name="colorMypageToolbar">#E85E6B</color>
     <color name="colorMyDialog">#57000000</color>
     <color name="colorSelected">#80888888</color>
+    <color name="colorHashTag">#535353</color>
 </resources>

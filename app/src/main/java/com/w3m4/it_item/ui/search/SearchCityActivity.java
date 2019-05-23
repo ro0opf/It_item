@@ -1,6 +1,7 @@
 package com.w3m4.it_item.ui.search;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,11 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.w3m4.it_item.R;
 import com.w3m4.it_item.data.City;
+import com.w3m4.it_item.data.model.list.ListRepo;
 import com.w3m4.it_item.databinding.ActivitySearchCityBinding;
 import com.w3m4.it_item.ui.search.city2.CityCategoryAdapter;
 import com.w3m4.it_item.ui.search.city2.CityListAdapter;
 
 import java.util.ArrayList;
+
+import io.reactivex.disposables.CompositeDisposable;
 
 public class SearchCityActivity extends AppCompatActivity {
 
@@ -23,6 +27,7 @@ public class SearchCityActivity extends AppCompatActivity {
     private CityAdapter CityAdapter;
     private CityListAdapter cityListAdapter;
     private CityCategoryAdapter cityCategoryAdapter;
+    private CompositeDisposable disposable = new CompositeDisposable();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,18 +87,25 @@ public class SearchCityActivity extends AppCompatActivity {
 
     private void initCityAdapterObserve() {
         CityAdapter.cityLiveData.observe(this, data -> {
-            openCity2();
+            openCity2(data);
         });
     }
 
-    private void openCity2() {
+    private void openCity2(City city) {
         binding.rcvCity.setVisibility(View.INVISIBLE);
         binding.city2.clMain.setVisibility(View.VISIBLE);
-        fetchCity2ListData();
+        fetchCity2ListData(city);
     }
 
-    private void fetchCity2ListData() {
+    private void fetchCity2ListData(City city) {
         // TODO : feachDATA
+        disposable.add(ListRepo.getInstance().getCityList(city.getName())
+                .subscribe(data -> {
+                            cityListAdapter.setItems(data.getLists());
+                        }, e -> {
+                            e.printStackTrace();
+                        }
+                ));
     }
 
     private void closeCity2() {
@@ -102,11 +114,11 @@ public class SearchCityActivity extends AppCompatActivity {
     }
 
     private void fetchCityData() {
-        CityAdapter.addItem(new City(R.drawable.ic_city_tokyo, "도쿄"));
+        CityAdapter.addItem(new City(R.drawable.ic_city_tokyo, "Tokyo"));
         CityAdapter.addItem(new City(R.drawable.ic_city_hokkaido, "훗카이도"));
         CityAdapter.addItem(new City(R.drawable.ic_city_kyoto, "쿄토"));
         CityAdapter.addItem(new City(R.drawable.ic_city_kyusu, "큐슈"));
-        CityAdapter.addItem(new City(R.drawable.ic_city_osaka, "오사카"));
+        CityAdapter.addItem(new City(R.drawable.ic_city_osaka, "Osaka"));
         CityAdapter.addItem(new City(R.drawable.ic_city_sapporo, "삿포로"));
     }
 
@@ -125,5 +137,11 @@ public class SearchCityActivity extends AppCompatActivity {
         } else {
             finish();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        disposable.dispose();
+        super.onDestroy();
     }
 }

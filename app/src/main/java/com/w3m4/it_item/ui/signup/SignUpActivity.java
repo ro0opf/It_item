@@ -1,4 +1,4 @@
-package com.w3m4.it_item.ui.interest;
+package com.w3m4.it_item.ui.signup;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,20 +14,20 @@ import com.w3m4.it_item.R;
 import com.w3m4.it_item.data.Category;
 import com.w3m4.it_item.data.City;
 import com.w3m4.it_item.data.Me;
-import com.w3m4.it_item.databinding.ActivityInterestBinding;
+import com.w3m4.it_item.databinding.ActivitySignupBinding;
 import com.w3m4.it_item.ui.main.MainActivity;
 
 import java.util.ArrayList;
 
-public class InterestActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
     private CityAdapter cityAdatper;
     private CategoryAdapter categoryAdapter;
-    private ActivityInterestBinding binding;
+    private ActivitySignupBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_interest);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_signup);
 
         initUser();
         initCityRcv(binding.rcvCity);
@@ -35,14 +35,13 @@ public class InterestActivity extends AppCompatActivity {
         fetchCityData();
         fetchCategoryData();
         binding.btnInterestDone.setOnClickListener(v -> {
-            // TODO: 서버로 어레이리스트 전달
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         });
     }
 
     private void initCityRcv(RecyclerView rcv) {
-        cityAdatper = new CityAdapter(new ArrayList<>(), this);
+        cityAdatper = new CityAdapter(new ArrayList<>());
         rcv.setHasFixedSize(true);
         rcv.setAdapter(cityAdatper);
     }

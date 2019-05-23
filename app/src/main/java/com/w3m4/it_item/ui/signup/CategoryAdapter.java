@@ -1,4 +1,4 @@
-package com.w3m4.it_item.ui.interest;
+package com.w3m4.it_item.ui.signup;
 
 import android.view.LayoutInflater;
 import android.view.View;

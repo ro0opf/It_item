@@ -26,6 +26,10 @@ public class mList {
     @Expose
     private String listThumbnailUrl;
 
+    @SerializedName("items")
+    @Expose
+    private ArrayList<Item> items;
+
     public mList(String city, String title, String userNickname, ArrayList<String> tags, String listThumbnailUrl) {
         this.city = city;
         this.title = title;
@@ -72,5 +76,13 @@ public class mList {
 
     public void setListThumbnailUrl(String listThumbnailUrl) {
         this.listThumbnailUrl = listThumbnailUrl;
+    }
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
     }
 }

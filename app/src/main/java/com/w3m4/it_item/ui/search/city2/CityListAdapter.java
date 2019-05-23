@@ -8,10 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.request.RequestOptions;
 import com.w3m4.it_item.common.BaseRecyclerViewAdapter;
+import com.w3m4.it_item.data.Item;
 import com.w3m4.it_item.data.mList;
 import com.w3m4.it_item.databinding.ItemCity2ListBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CityListAdapter extends BaseRecyclerViewAdapter<mList, CityListAdapter.ViewHolder> {
@@ -23,7 +26,20 @@ public class CityListAdapter extends BaseRecyclerViewAdapter<mList, CityListAdap
 
     @Override
     public void onBindView(CityListAdapter.ViewHolder holder, int position) {
+        holder.binding.tvUser.setText(getItem(position).getUserNickname() + holder.binding.tvUser.getText());
+        holder.binding.tvTitle.setText(getItem(position).getTitle());
+        ArrayList<Item> items = getItem(position).getItems();
+        requestManager.load(items.get(0).getImageUrl())
+                .apply(RequestOptions.centerCropTransform())
+                .into(holder.binding.ivItem1);
 
+        requestManager.load(items.get(1).getImageUrl())
+                .apply(RequestOptions.centerCropTransform())
+                .into(holder.binding.ivItem2);
+
+        requestManager.load(items.get(2).getImageUrl())
+                .apply(RequestOptions.centerCropTransform())
+                .into(holder.binding.ivItem3);
     }
 
     @Override

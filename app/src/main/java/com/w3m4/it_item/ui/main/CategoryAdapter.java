@@ -32,7 +32,8 @@ public class CategoryAdapter extends BaseRecyclerViewAdapter<Category, CategoryA
     @Override
     public void onBindView(ViewHolder holder, int position) {
         RequestOptions requestOptions = new RequestOptions();
-        requestOptions.transforms(new CenterCrop(), new RoundedCorners(20));
+        requestOptions.transforms(new CenterCrop(),
+                new RoundedCorners(20));
 
         if (position != 0) {
             requestManager.load(getItem(position).getImg())

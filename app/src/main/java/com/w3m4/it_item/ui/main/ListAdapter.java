@@ -27,8 +27,12 @@ public class ListAdapter extends BaseRecyclerViewAdapter<mList, ListAdapter.View
     public void onBindView(ListAdapter.ViewHolder holder, int position) {
         holder.binding.tvTitle.setText(getItem(position).getTitle());
         requestManager.load(getItem(position).getListThumbnailUrl())
-                .apply(RequestOptions.bitmapTransform(new RoundedCorners(55)))
+                .apply(RequestOptions.bitmapTransform(
+                        new RoundedCorners(55)))
                 .into(holder.binding.ivImage);
+        for (String tag:getItem(position).getTags()) {
+            holder.binding.tvTags.setText("#" + tag + " " + holder.binding.tvTags.getText());
+        }
     }
 
     @NonNull

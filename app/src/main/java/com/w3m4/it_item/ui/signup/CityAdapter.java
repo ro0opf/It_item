@@ -1,6 +1,5 @@
-package com.w3m4.it_item.ui.interest;
+package com.w3m4.it_item.ui.signup;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +19,9 @@ import java.util.List;
 
 public class CityAdapter extends BaseRecyclerViewAdapter<City, CityAdapter.ViewHolder> {
     RequestManager requestManager;
-    private Context context;
 
-    public CityAdapter(List<City> dataSet, Context context) {
+    public CityAdapter(List<City> dataSet) {
         super(dataSet);
-        this.context=context;
     }
 
     @NonNull
@@ -66,8 +63,6 @@ public class CityAdapter extends BaseRecyclerViewAdapter<City, CityAdapter.ViewH
 
     private void initCheckedStatus(ImageView imageView)
     {
-        // 선택된 상태에 따라 -> 추후 코드 변경 필요
-        //
         imageView.setVisibility(View.INVISIBLE);
     }
 

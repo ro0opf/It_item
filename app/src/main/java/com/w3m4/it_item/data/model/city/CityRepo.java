@@ -12,8 +12,4 @@ public class CityRepo {
     private static class LazyInit {
         private static final CityRepo INSTANCE = new CityRepo();
     }
-//
-//    public String getUserId(String userId) {
-//        return service.getUserId(userId);
-//    }
 }

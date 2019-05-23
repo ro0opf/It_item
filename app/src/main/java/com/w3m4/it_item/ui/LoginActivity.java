@@ -17,6 +17,7 @@ import com.kakao.util.OptionalBoolean;
 import com.kakao.util.exception.KakaoException;
 import com.w3m4.it_item.R;
 import com.w3m4.it_item.data.Me;
+import com.w3m4.it_item.data.UserDegree;
 import com.w3m4.it_item.databinding.ActivityLoginBinding;
 import com.w3m4.it_item.ui.interest.InterestActivity;
 import com.w3m4.it_item.ui.main.MainActivity;
@@ -73,7 +74,8 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(MeV2Response response) {
-                // Set Me Instance
+                // TODO: 서버에 등록된 유저인지 판별 후 진행해야 합니다.
+
                 Me.getInstance().setId(response.getId() + "");
                 Me.getInstance().setNickname(response.getNickname());
                 Me.getInstance().setThumbnail(response.getThumbnailImagePath());
@@ -88,7 +90,21 @@ public class LoginActivity extends AppCompatActivity {
                     // TODO: AgeRange Set
                 }
 
-                // TODO: Set Accumulated Point, Current Point, Degree
+                // TODO: Get
+                int point = 0;
+                if (isBetween(point, 0, 100)) {
+                    Me.getInstance().setDegree(UserDegree.Bronze);
+                } else if (isBetween(point, 100, 200)) {
+                    Me.getInstance().setDegree(UserDegree.Silver);
+                } else if (isBetween(point, 200, 300)) {
+                    Me.getInstance().setDegree(UserDegree.Gold);
+                } else if (isBetween(point, 300, 400)) {
+                    Me.getInstance().setDegree(UserDegree.Platinum);
+                } else if (isBetween(point, 400, 500)) {
+                    Me.getInstance().setDegree(UserDegree.Diamond);
+                } else if (isBetween(point, 500, 99999)) {
+                    Me.getInstance().setDegree(UserDegree.Challenger);
+                }
 
                 if (response.hasSignedUp() == OptionalBoolean.TRUE) { // TODO: 신규 회원 판별 후 메인 액티비티 or 관심 등록 액티비티로
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
@@ -99,6 +115,10 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public boolean isBetween(int x, int lower, int upper) {
+        return lower <= x && x < upper;
     }
 
     private class SessionCallback implements ISessionCallback {

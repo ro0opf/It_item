@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
-import com.w3m4.it_item.R;
 import com.w3m4.it_item.common.BaseRecyclerViewAdapter;
 import com.w3m4.it_item.data.City;
 import com.w3m4.it_item.databinding.ItemCityBinding;
@@ -47,10 +46,6 @@ public class CityAdapter extends BaseRecyclerViewAdapter<City, CityAdapter.ViewH
         requestManager.load(city.getBg())
                 .apply(options)
                 .into(holder.binding.ivCityImage);
-
-        requestManager.load(R.drawable.ic_checked)
-                .apply(options)
-                .into(holder.binding.ivSelected);
 
         // 체크된 상태 초기화 -> 추후 입력받은 데이터에 따라 로딩
         initCheckedStatus(holder.binding.ivSelected);

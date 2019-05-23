@@ -28,6 +28,8 @@ public class Login {
 
 			User u = userService.printUser(id);
 
+//			System.out.println("######"+u.getU_email());
+			
 			JSONObject json = new JSONObject();
 
 			json.put("u_id", u.getU_id());

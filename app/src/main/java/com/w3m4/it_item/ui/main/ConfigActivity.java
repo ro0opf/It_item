@@ -5,7 +5,10 @@ import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.w3m4.it_item.R;
+import com.w3m4.it_item.data.Me;
 import com.w3m4.it_item.databinding.ActivityConfigBinding;
 
 public class ConfigActivity extends Activity {
@@ -17,10 +20,19 @@ public class ConfigActivity extends Activity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_config);
 
+        initMainData();
         setResult(REQUEST_OK);
-        binding.clMain.setOnClickListener(v -> {
+        binding.vOut.setOnClickListener(v -> {
             onBackPressed();
         });
+    }
+
+    private void initMainData() {
+        binding.tvWelcome.setText(Me.getInstance().getNickname() + binding.tvWelcome.getText());
+        Glide.with(this)
+                .load(Me.getInstance().getThumbnail())
+                .apply(RequestOptions.circleCropTransform())
+                .into(binding.ivProfile);
     }
 
     @Override

@@ -12,4 +12,7 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
     <color name="colorFaintBlack">#888888</color>
+    <color name="colorBoundery">#D6D6D6</color>
+    <color name="colorConfigBackground">#E65F5F</color>
+    <color name="colorCityTab">#FFD6D6</color>
 </resources>

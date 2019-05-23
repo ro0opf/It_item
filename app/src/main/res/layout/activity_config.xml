@@ -7,9 +7,44 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdh_300"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdh_380"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.38" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdh_460"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.46" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdh_540"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.54" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdh_920"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.92" />
 
         <View
             android:id="@+id/v_main"
@@ -19,6 +54,143 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintWidth_default="percent"
             app:layout_constraintWidth_percent="0.57" />
+
+        <View
+            android:id="@+id/v_out"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toStartOf="@id/v_main"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/v_header"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorConfigBackground"
+            app:layout_constraintBottom_toBottomOf="@id/gdh_300"
+            app:layout_constraintEnd_toEndOf="@id/v_main"
+            app:layout_constraintStart_toStartOf="@id/v_main"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="30dp"
+            android:text="@string/config_welcom"
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/v_header"
+            app:layout_constraintStart_toStartOf="@id/v_header" />
+
+        <ImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="@id/v_header"
+            app:layout_constraintTop_toTopOf="@id/v_header"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.2" />
+
+        <TextView
+            android:id="@+id/tv_mypage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="마이페이지"
+            android:textColor="@color/colorBlack"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/v_380"
+            app:layout_constraintStart_toStartOf="@id/v_main"
+            app:layout_constraintTop_toBottomOf="@id/gdh_300" />
+
+        <ImageView
+            android:id="@+id/iv_mypage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/ic_config_next"
+            app:layout_constraintBottom_toTopOf="@id/v_380"
+            app:layout_constraintEnd_toEndOf="@id/v_main"
+            app:layout_constraintTop_toBottomOf="@id/gdh_300" />
+
+        <View
+            android:id="@+id/v_380"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/colorBoundery"
+            app:layout_constraintEnd_toEndOf="@id/v_main"
+            app:layout_constraintStart_toStartOf="@id/v_main"
+            app:layout_constraintTop_toTopOf="@id/gdh_380" />
+
+        <TextView
+            android:id="@+id/tv_qna"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="1:1 문의"
+            android:textColor="@color/colorBlack"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/v_460"
+            app:layout_constraintStart_toStartOf="@id/v_main"
+            app:layout_constraintTop_toBottomOf="@id/v_380" />
+
+        <ImageView
+            android:id="@+id/iv_qna"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/ic_config_next"
+            app:layout_constraintBottom_toTopOf="@id/v_460"
+            app:layout_constraintEnd_toEndOf="@id/v_main"
+            app:layout_constraintTop_toBottomOf="@id/v_380" />
+
+        <View
+            android:id="@+id/v_460"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/colorBoundery"
+            app:layout_constraintEnd_toEndOf="@id/v_main"
+            app:layout_constraintStart_toStartOf="@id/v_main"
+            app:layout_constraintTop_toTopOf="@id/gdh_460" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/colorBoundery"
+            app:layout_constraintEnd_toEndOf="@id/v_main"
+            app:layout_constraintStart_toStartOf="@id/v_main"
+            app:layout_constraintTop_toTopOf="@id/gdh_920" />
+
+        <TextView
+            android:id="@+id/tv_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="로그아웃"
+            android:textColor="@color/colorBlack"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/v_main"
+            app:layout_constraintStart_toStartOf="@id/v_main"
+            app:layout_constraintTop_toBottomOf="@id/gdh_920" />
+
+        <ImageView
+            android:id="@+id/iv_logout"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/ic_config_logout"
+            app:layout_constraintBottom_toBottomOf="@id/v_main"
+            app:layout_constraintEnd_toEndOf="@id/v_main"
+            app:layout_constraintTop_toBottomOf="@id/gdh_920" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

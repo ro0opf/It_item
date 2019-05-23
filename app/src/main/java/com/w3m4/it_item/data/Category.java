@@ -12,6 +12,11 @@ public class Category {
         this.img = img;
     }
 
+    public Category(int img, String name) {
+        this.name = name;
+        this.img = img;
+    }
+
     public boolean isSelected() {
         return isSelected;
     }
@@ -34,6 +39,7 @@ public class Category {
 
     public void setCode(String code) {
         this.code = code;
+    }
 
     public String getName() {
         return name;

@@ -11,7 +11,6 @@ import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 import com.w3m4.it_item.common.BaseRecyclerViewAdapter;
 import com.w3m4.it_item.data.Category;
-import com.w3m4.it_item.data.Photo;
 import com.w3m4.it_item.databinding.ItemCategoryBinding;
 
 import java.util.List;
@@ -35,12 +34,11 @@ public class CategoryAdapter extends BaseRecyclerViewAdapter<Category, CategoryA
     @Override
     public void onBindView(CategoryAdapter.ViewHolder holder, int position) {
         Category category = getItem(holder.getAdapterPosition());
-        Photo photo = category.getPhoto();
 
         RequestOptions options = new RequestOptions();
         options.circleCrop();
 
-        requestManager.load(photo.getImage())
+        requestManager.load(category.getImg())
                 .apply(options)
                 .into(holder.binding.ivCategoryImage);
         holder.binding.tvCategoryName.setText(category.getName());

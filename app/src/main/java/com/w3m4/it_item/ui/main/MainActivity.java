@@ -3,7 +3,6 @@ package com.w3m4.it_item.ui.main;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -16,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.w3m4.it_item.R;
 import com.w3m4.it_item.data.Category;
 import com.w3m4.it_item.data.City;
+import com.w3m4.it_item.data.Me;
 import com.w3m4.it_item.data.model.list.ListRepo;
 import com.w3m4.it_item.databinding.ActivityMainBinding;
 import com.w3m4.it_item.ui.search.SearchCityActivity;
@@ -43,9 +43,14 @@ public class MainActivity extends AppCompatActivity {
         initCityRcv(binding.rcvCity);
         initCategoryRcv(binding.rcvCategory);
         initClickListener();
+        initMainData();
         fetchListData();
         fetchCityData();
         fetchCategoryData();
+    }
+
+    private void initMainData() {
+        binding.tvWelcome.setText(Me.getInstance().getNickname() + binding.tvWelcome.getText());
     }
 
     private void fetchCategoryData() {
@@ -72,12 +77,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void fetchCityData() {
         cityAdapter.addItem(new City(R.drawable.ic_city_tokyo, "Dummy"));
-        cityAdapter.addItem(new City(R.drawable.ic_city_tokyo, "OSAKA"));
+        cityAdapter.addItem(new City(R.drawable.ic_city_osaka, "OSAKA"));
         cityAdapter.addItem(new City(R.drawable.ic_city_tokyo, "TOKYO"));
-        cityAdapter.addItem(new City(R.drawable.ic_city_tokyo, "HOKKAIDO"));
-        cityAdapter.addItem(new City(R.drawable.ic_city_tokyo, "KYUSHU"));
-        cityAdapter.addItem(new City(R.drawable.ic_city_tokyo, "OKINAWA"));
-        cityAdapter.addItem(new City(R.drawable.ic_city_tokyo, "KYOTO"));
+        cityAdapter.addItem(new City(R.drawable.ic_city_hokkaido, "HOKKAIDO"));
+        cityAdapter.addItem(new City(R.drawable.ic_city_kyusu, "KYUSHU"));
+        cityAdapter.addItem(new City(R.drawable.ic_city_okinawa, "OKINAWA"));
+        cityAdapter.addItem(new City(R.drawable.ic_city_kyoto, "KYOTO"));
     }
 
     private void initCityRcv(RecyclerView rcv) {
@@ -158,9 +163,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == REQUEST_ACT){
-            Log.e("#$Main", resultCode + "");
             if(resultCode == REQUEST_OK){
-                Log.e("#$Main", "1");
                 binding.vAct.setVisibility(View.INVISIBLE);
             }
         }

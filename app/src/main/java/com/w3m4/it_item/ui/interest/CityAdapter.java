@@ -11,7 +11,6 @@ import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 import com.w3m4.it_item.common.BaseRecyclerViewAdapter;
 import com.w3m4.it_item.data.City;
-import com.w3m4.it_item.data.Photo;
 import com.w3m4.it_item.databinding.ItemCityBinding;
 
 import java.util.List;
@@ -35,12 +34,11 @@ public class CityAdapter extends BaseRecyclerViewAdapter<City, CityAdapter.ViewH
     @Override
     public void onBindView(ViewHolder holder, int position) {
         City city = getItem(holder.getAdapterPosition());
-        Photo photo = city.getPhoto();
 
         RequestOptions options = new RequestOptions();
         options.circleCrop();
 
-        requestManager.load(photo.getImage())
+        requestManager.load(city.getBg())
                 .apply(options)
                 .into(holder.binding.ivCityImage);
         holder.binding.tvCityName.setText((city.getName()));

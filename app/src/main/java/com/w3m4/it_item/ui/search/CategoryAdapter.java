@@ -34,7 +34,7 @@ public class CategoryAdapter extends BaseRecyclerViewAdapter<Category, CategoryA
     @Override
     public void onBindView(ViewHolder holder, int position) {
         holder.binding.tvName.setText(getItem(position).getName());
-        requestManager.load(getItem(position).getBg())
+        requestManager.load(getItem(position).getImg())
                 .apply(RequestOptions.circleCropTransform())
                 .into(holder.binding.ivImage);
     }

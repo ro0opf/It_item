@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
@@ -13,14 +14,14 @@ import com.w3m4.it_item.R;
 import com.w3m4.it_item.data.Category;
 import com.w3m4.it_item.data.City;
 import com.w3m4.it_item.data.Me;
-import com.w3m4.it_item.data.Photo;
 import com.w3m4.it_item.databinding.ActivityInterestBinding;
+import com.w3m4.it_item.ui.main.MainActivity;
 
 import java.util.ArrayList;
 
 public class InterestActivity extends AppCompatActivity {
-    private ArrayList<City> cityArrayList = new ArrayList<City>();
-    private ArrayList<Category> categoryArrayList = new ArrayList<Category>();
+    private CityAdapter cityAdatper;
+    private CategoryAdapter categoryAdapter;
     private ActivityInterestBinding binding;
 
     @Override
@@ -29,22 +30,27 @@ public class InterestActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_interest);
 
         initUser();
-        initCity();
-        initCategory();
-
-        CityAdapter cityAdapter = new CityAdapter(cityArrayList);
-        binding.rcvCity.setAdapter(cityAdapter);
-        CategoryAdapter categoryAdapter = new CategoryAdapter(categoryArrayList);
-        binding.rcvCategory.setAdapter(categoryAdapter);
-
-        String nickname = Me.getInstance().getNickname();
-        binding.tvWannaKnow.setText(nickname + binding.tvWannaKnow.getText());
-
+        initCityRcv(binding.rcvCity);
+        initCategoryRcv(binding.rcvCategory);
+        fetchCityData();
+        fetchCategoryData();
         binding.btnInterestDone.setOnClickListener(v -> {
             // TODO: 서버로 어레이리스트 전달
-            startActivity(new Intent(getApplicationContext(), com.w3m4.it_item.ui.city.SearchActivity.class));
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         });
+    }
+
+    private void initCityRcv(RecyclerView rcv) {
+        cityAdatper = new CityAdapter(new ArrayList<>());
+        rcv.setHasFixedSize(true);
+        rcv.setAdapter(cityAdatper);
+    }
+
+    private void initCategoryRcv(RecyclerView rcv){
+        categoryAdapter = new CategoryAdapter(new ArrayList<>());
+        rcv.setHasFixedSize(true);
+        rcv.setAdapter(categoryAdapter);
     }
 
     private void initUser() {
@@ -52,48 +58,26 @@ public class InterestActivity extends AppCompatActivity {
                 .load(Me.getInstance().getThumbnail())
                 .apply(RequestOptions.bitmapTransform(new CircleCrop()))
                 .into(binding.ivThumbnail);
+
+        binding.tvWannaKnow.setText(Me.getInstance().getNickname() + binding.tvWannaKnow.getText());
     }
 
-    private void initCity() {
+    private void fetchCityData() {
         // TODO: 서버에서 도시/카테고리  데이터 가져와서 쪼로록 넣도록 변경할까요?
-        cityArrayList.add
-                (new City("city00", "도쿄",
-                        new Photo(R.drawable.tokyo_thumb, "도쿄")));
-        cityArrayList.add
-                (new City("city01", "오사카",
-                        new Photo(R.drawable.osaka_thumb, "오사카")));
-        cityArrayList.add
-                (new City("city02", "삿포로",
-                        new Photo(R.drawable.sapporo_thumb, "삿포로")));
-        cityArrayList.add
-                (new City("city03", "홋카이도",
-                        new Photo(R.drawable.hokkaido_thumb, "홋카이도")));
-        cityArrayList.add
-                (new City("city04", "큐슈",
-                        new Photo(R.drawable.kyusu_thumb, "큐슈")));
-        cityArrayList.add
-                (new City("city05", "교토",
-                        new Photo(R.drawable.kyoto_thumb, "교토")));
+        cityAdatper.addItem(new City(R.drawable.tokyo_thumb, "도쿄"));
+        cityAdatper.addItem(new City(R.drawable.osaka_thumb, "오사카"));
+        cityAdatper.addItem(new City(R.drawable.sapporo_thumb, "삿포로"));
+        cityAdatper.addItem(new City(R.drawable.hokkaido_thumb, "훗카이도"));
+        cityAdatper.addItem(new City(R.drawable.kyusu_thumb, "큐슈"));
+        cityAdatper.addItem(new City(R.drawable.kyoto_thumb, "쿄토"));
     }
 
-    private void initCategory() {
-        categoryArrayList.add(
-                new Category("category00", "식품",
-                        new Photo(R.drawable.ic_food, "식품")));
-        categoryArrayList.add(
-                new Category("category01", "과자",
-                        new Photo(R.drawable.ic_snack, "과자")));
-        categoryArrayList.add(
-                new Category("category02", "약품",
-                        new Photo(R.drawable.ic_pharmacy, "약품")));
-        categoryArrayList.add(
-                new Category("category03", "건강보조제",
-                        new Photo(R.drawable.ic_cat, "건강보조제")));
-        categoryArrayList.add(
-                new Category("category04", "뷰티",
-                        new Photo(R.drawable.ic_cosmetics, "뷰티")));
-        categoryArrayList.add(
-                new Category("category05", "토이",
-                        new Photo(R.drawable.ic_robot, "토이")));
+    private void fetchCategoryData() {
+        categoryAdapter.addItem(new Category("category00", "식품", R.drawable.ic_food));
+        categoryAdapter.addItem(new Category("category01", "과자", R.drawable.ic_snack));
+        categoryAdapter.addItem(new Category("category02", "약품", R.drawable.ic_pharmacy));
+        categoryAdapter.addItem(new Category("category03", "건강보조제", R.drawable.ic_cat));
+        categoryAdapter.addItem(new Category("category04", "뷰티", R.drawable.ic_cosmetics));
+        categoryAdapter.addItem(new Category("category05", "토이", R.drawable.ic_robot));
     }
 }

@@ -23,7 +23,7 @@ public class SearchCategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_search_category);
 
-        binding.menuTop.edtSearch.setHint("구매할 기념품을 선택해주세요.");
+        binding.menuTop.edtSearch.setHint(R.string.search_category_edt_hint);
         initCategoryRcv(binding.rcvCategory);
         fetchCategoryData();
     }

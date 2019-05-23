@@ -18,6 +18,11 @@ public class mList {
     @Expose
     private String userID;
 
+    @SerializedName("userNickname")
+    @Expose
+    private String userNickname;
+
+
     @SerializedName("hashTag")
     @Expose
     private ArrayList<String> tags;

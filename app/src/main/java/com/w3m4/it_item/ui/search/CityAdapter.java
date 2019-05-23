@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -15,11 +16,11 @@ import com.w3m4.it_item.databinding.ItemSearchBinding;
 
 import java.util.List;
 
-public class mCityAdapter extends BaseRecyclerViewAdapter<City, mCityAdapter.ViewHolder> {
+public class CityAdapter extends BaseRecyclerViewAdapter<City, CityAdapter.ViewHolder> {
     RequestManager requestManager;
+    public MutableLiveData<City> cityLiveData = new MutableLiveData<>();
 
-    public mCityAdapter(List<City> dataSet)
-    {
+    public CityAdapter(List<City> dataSet) {
         super(dataSet);
     }
 
@@ -32,11 +33,14 @@ public class mCityAdapter extends BaseRecyclerViewAdapter<City, mCityAdapter.Vie
     }
 
     @Override
-    public mCityAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CityAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemSearchBinding binding = ItemSearchBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         requestManager = Glide.with(parent.getContext());
-
-        return new ViewHolder(binding);
+        ViewHolder viewHolder = new ViewHolder(binding);
+        binding.clMain.setOnClickListener(v -> {
+            cityLiveData.setValue(getItem(viewHolder.getAdapterPosition()));
+        });
+        return viewHolder;
     }
 
 

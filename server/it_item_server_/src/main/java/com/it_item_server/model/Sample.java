@@ -1,5 +1,9 @@
 package com.it_item_server.model;
 
+import java.util.ArrayList;
+
+import org.json.JSONObject;
+
 public class Sample {
 
 	private String seq;
@@ -39,4 +43,20 @@ public class Sample {
 		this.seq = seq;
 	}
 
+	public static void main(String[] args) {
+		JSONObject s = new JSONObject();
+
+		ArrayList<JSONObject> n = new ArrayList<>();
+		
+		for(int i=0; i<3; i++) {
+			JSONObject vv = new JSONObject();
+			vv.put("key", "A"+1);
+			
+			n.add(vv);
+		}
+
+		s.put("top", n);
+		
+		System.out.println(s);
+	}
 }

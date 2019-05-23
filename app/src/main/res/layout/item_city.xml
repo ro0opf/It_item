@@ -9,33 +9,47 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_main"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/middle_margin">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
 
-        <ImageView
-            android:id="@+id/iv_city_image"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/circle"
-            android:backgroundTint="@color/colorAccent"
-            android:padding="3dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintDimensionRatio="1:1"
+        <FrameLayout
+            android:id="@+id/img_frame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_city_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/circle"
+                android:backgroundTint="@color/colorAccent"
+                android:padding="3dp"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/iv_selected"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/bg_selected"
+                android:src="@drawable/ic_checked"
+                android:padding="3dp"
+                android:scaleType="centerCrop" />
+
+        </FrameLayout>
 
         <TextView
             android:id="@+id/tv_city_name"
+            android:gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:textSize="12sp"
+            android:layout_margin="10dp"
+            android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_city_image" />
+            app:layout_constraintTop_toBottomOf="@id/img_frame" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

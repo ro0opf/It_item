@@ -1,7 +1,10 @@
 package com.w3m4.it_item.ui.interest;
 
+import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
+import com.w3m4.it_item.R;
 import com.w3m4.it_item.common.BaseRecyclerViewAdapter;
 import com.w3m4.it_item.data.City;
 import com.w3m4.it_item.databinding.ItemCityBinding;
@@ -17,9 +21,11 @@ import java.util.List;
 
 public class CityAdapter extends BaseRecyclerViewAdapter<City, CityAdapter.ViewHolder> {
     RequestManager requestManager;
+    private Context context;
 
-    public CityAdapter(List<City> dataSet) {
+    public CityAdapter(List<City> dataSet, Context context) {
         super(dataSet);
+        this.context=context;
     }
 
     @NonNull
@@ -41,30 +47,33 @@ public class CityAdapter extends BaseRecyclerViewAdapter<City, CityAdapter.ViewH
         requestManager.load(city.getBg())
                 .apply(options)
                 .into(holder.binding.ivCityImage);
-        holder.binding.tvCityName.setText((city.getName()));
+
+        requestManager.load(R.drawable.ic_checked)
+                .apply(options)
+                .into(holder.binding.ivSelected);
+
+        // 체크된 상태 초기화 -> 추후 입력받은 데이터에 따라 로딩
+        initCheckedStatus(holder.binding.ivSelected);
+
+        holder.binding.tvCityName.setText(city.getName());
 
         holder.binding.clMain.setOnClickListener(v -> {
-            if (city.isSelected()) {
-                city.setSelected(false);
-            } else {
-                city.setSelected(true);
+            if (holder.binding.ivSelected.getVisibility() == View.VISIBLE) // 보일 경우
+            {
+                holder.binding.ivSelected.setVisibility(View.INVISIBLE); // -> 안보이게
+            } else // 안 보일 경우
+            {
+                holder.binding.ivSelected.setVisibility(View.VISIBLE); // -> 보이게
             }
         });
 
-//        ViewGroup.LayoutParams layoutParams=holder.binding.clMain.getLayoutParams();
-//        ViewGroup parent=(ViewGroup)holder.binding.clMain.getParent();
-//        layoutParams.height=(int)(parent.getHeight()*0.5);
-//        holder.binding.clMain.setLayoutParams(layoutParams);
-//
-//
-//
-////        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-////        View itemView = inflater.inflate(R.layout.item_category, parent, false);
-////
-////        ViewGroup.LayoutParams layoutParams = itemView.getLayoutParams();
-////        layoutParams.height = (int) (parent.getHeight() * 0.5);
-////        itemView.setLayoutParams(layoutParams);
+    }
 
+    private void initCheckedStatus(ImageView imageView)
+    {
+        // 선택된 상태에 따라 -> 추후 코드 변경 필요
+        //
+        imageView.setVisibility(View.INVISIBLE);
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

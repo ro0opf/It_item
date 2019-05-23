@@ -42,7 +42,7 @@ public class InterestActivity extends AppCompatActivity {
     }
 
     private void initCityRcv(RecyclerView rcv) {
-        cityAdatper = new CityAdapter(new ArrayList<>());
+        cityAdatper = new CityAdapter(new ArrayList<>(), this);
         rcv.setHasFixedSize(true);
         rcv.setAdapter(cityAdatper);
     }

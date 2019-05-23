@@ -15,4 +15,5 @@
     <color name="colorBoundery">#D6D6D6</color>
     <color name="colorConfigBackground">#E65F5F</color>
     <color name="colorCityTab">#FFD6D6</color>
+    <color name="colorSelected">#80888888</color>
 </resources>

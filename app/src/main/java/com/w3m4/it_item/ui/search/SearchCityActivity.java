@@ -43,7 +43,7 @@ public class SearchCityActivity extends AppCompatActivity {
         cityCategoryAdapter = new CityCategoryAdapter(new ArrayList<>());
 
         rcv.setHasFixedSize(true);
-        rcv.setLayoutManager(new LinearLayoutManager(this));
+        rcv.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         rcv.setAdapter(cityCategoryAdapter);
     }
 
@@ -51,7 +51,7 @@ public class SearchCityActivity extends AppCompatActivity {
         cityListAdapter = new CityListAdapter(new ArrayList<>());
 
         rcv.setHasFixedSize(true);
-        rcv.setLayoutManager(new LinearLayoutManager(this));
+        rcv.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         rcv.setAdapter(cityListAdapter);
     }
 
@@ -59,7 +59,7 @@ public class SearchCityActivity extends AppCompatActivity {
         binding.menuTop.ivBack.setOnClickListener(v -> {
             if (binding.city2.clMain.getVisibility() == View.VISIBLE) {
                 closeCity2();
-            }else{
+            } else {
                 finish();
             }
         });
@@ -69,10 +69,14 @@ public class SearchCityActivity extends AppCompatActivity {
         binding.city2.vLeft.setOnClickListener(v -> {
             binding.city2.vLeft.setVisibility(View.INVISIBLE);
             binding.city2.vRight.setVisibility(View.VISIBLE);
+            binding.city2.rcvList.setVisibility(View.VISIBLE);
+            binding.city2.rcvCategory.setVisibility(View.INVISIBLE);
         });
         binding.city2.vRight.setOnClickListener(v -> {
             binding.city2.vLeft.setVisibility(View.VISIBLE);
             binding.city2.vRight.setVisibility(View.INVISIBLE);
+            binding.city2.rcvCategory.setVisibility(View.VISIBLE);
+            binding.city2.rcvList.setVisibility(View.INVISIBLE);
         });
     }
 
@@ -118,7 +122,7 @@ public class SearchCityActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (binding.city2.clMain.getVisibility() == View.VISIBLE) {
             closeCity2();
-        }else{
+        } else {
             finish();
         }
     }

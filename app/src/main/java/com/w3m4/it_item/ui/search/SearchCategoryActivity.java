@@ -33,8 +33,8 @@ public class SearchCategoryActivity extends AppCompatActivity {
         categoryAdapter.addItem(new Category(R.drawable.ic_cosmetics, "뷰티"));
         categoryAdapter.addItem(new Category(R.drawable.ic_pharmacy, "약품"));
         categoryAdapter.addItem(new Category(R.drawable.ic_snack, "과자"));
-        categoryAdapter.addItem(new Category(R.drawable.ic_cat, "지역 특산품"));
-        categoryAdapter.addItem(new Category(R.drawable.ic_robot, "장난감"));
+        categoryAdapter.addItem(new Category(R.drawable.ic_stationary, "문구류"));
+        categoryAdapter.addItem(new Category(R.drawable.ic_supplements, "건강보조제"));
     }
 
     private void initCategoryRcv(RecyclerView rcv) {

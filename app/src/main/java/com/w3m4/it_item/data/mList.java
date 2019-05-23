@@ -16,22 +16,22 @@ public class mList {
 
     @SerializedName("userID")
     @Expose
-    private String userID;
-
-    @SerializedName("userNickname")
-    @Expose
     private String userNickname;
 
-
-    @SerializedName("hashTag")
+    @SerializedName("hashtag")
     @Expose
     private ArrayList<String> tags;
 
-    public mList(String city, String title, String userID, ArrayList<String> tags) {
+    @SerializedName("thumbnailUrl")
+    @Expose
+    private String listThumbnailUrl;
+
+    public mList(String city, String title, String userNickname, ArrayList<String> tags, String listThumbnailUrl) {
         this.city = city;
         this.title = title;
-        this.userID = userID;
+        this.userNickname = userNickname;
         this.tags = tags;
+        this.listThumbnailUrl = listThumbnailUrl;
     }
 
     public String getCity() {
@@ -50,12 +50,12 @@ public class mList {
         this.title = title;
     }
 
-    public String getUserID() {
-        return userID;
+    public String getUserNickname() {
+        return userNickname;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setUserNickname(String userNickname) {
+        this.userNickname = userNickname;
     }
 
     public ArrayList<String> getTags() {
@@ -64,5 +64,13 @@ public class mList {
 
     public void setTags(ArrayList<String> tags) {
         this.tags = tags;
+    }
+
+    public String getListThumbnailUrl() {
+        return listThumbnailUrl;
+    }
+
+    public void setListThumbnailUrl(String listThumbnailUrl) {
+        this.listThumbnailUrl = listThumbnailUrl;
     }
 }

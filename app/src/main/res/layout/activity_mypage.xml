@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:expandedTitleGravity="top"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/main_background"
+                    app:layout_collapseMode="none">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/gdv_333"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.333" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/gdv_666"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.666" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="1:0.75"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_profile"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="50dp"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintEnd_toEndOf="@id/gdv_666"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_default="percent"
+                        app:layout_constraintWidth_percent="0.15" />
+
+                    <TextView
+                        android:id="@+id/tv_userNick"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="dd"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@id/iv_profile"
+                        app:layout_constraintStart_toStartOf="@id/iv_profile"
+                        app:layout_constraintTop_toBottomOf="@id/iv_profile" />
+
+
+                    <ImageView
+                        android:id="@+id/iv_userDegree"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="50dp"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/gdv_333"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_default="percent"
+                        app:layout_constraintWidth_percent="0.15" />
+
+                    <TextView
+                        android:id="@+id/tv_userDegree"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="구매왕"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@id/iv_userDegree"
+                        app:layout_constraintStart_toStartOf="@id/iv_userDegree"
+                        app:layout_constraintTop_toBottomOf="@id/iv_userDegree" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="@android:color/transparent"
+                    app:contentInsetStart="0dp"
+                    app:layout_collapseMode="pin">
+
+                    <include
+                        android:id="@+id/mypage_toolbar"
+                        layout="@layout/include_mypage_toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </androidx.appcompat.widget.Toolbar>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white">
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="1000dp"
+                    android:background="@color/colorWhite"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="24dp"
+            android:backgroundTint="@color/colorMain"
+            android:src="@drawable/ic_add_black_24dp"
+            app:fabSize="mini" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

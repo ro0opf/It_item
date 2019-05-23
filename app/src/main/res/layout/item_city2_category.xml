@@ -15,22 +15,92 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="#3434"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintDimensionRatio="1:0.5"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintDimensionRatio="1:0.5"/>
+
+        <TextView
+            android:id="@+id/tv_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text=" 님의 리스트"
+            android:textColor="@color/colorBlack"
+            android:textSize="15dp"
+            app:layout_constraintTop_toTopOf="@id/v_bg" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorBlack"
-            android:textSize="15dp"
-            app:layout_constraintTop_toTopOf="@id/v_bg"
-            app:layout_constraintStart_toStartOf="@id/v_bg"
             android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:text=" 님의 리스트"/>
+            android:text="오사카 뿌셔뿌셔"
+            app:layout_constraintEnd_toStartOf="@id/iv_click"
+            app:layout_constraintStart_toEndOf="@id/tv_user"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/iv_click"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/ic_chevron_left_black_24dp"
+            android:rotation="180"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_item1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/ic_no_photo"
+            app:layout_constraintBottom_toTopOf="@id/tv_num"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@id/iv_item2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_user"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <ImageView
+            android:id="@+id/iv_item2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/ic_no_photo"
+            app:layout_constraintBottom_toTopOf="@id/tv_num"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@id/iv_item3"
+            app:layout_constraintStart_toEndOf="@id/iv_item1"
+            app:layout_constraintTop_toBottomOf="@id/tv_user"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <ImageView
+            android:id="@+id/iv_item3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/ic_no_photo"
+            app:layout_constraintBottom_toTopOf="@id/tv_num"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_item2"
+            app:layout_constraintTop_toBottomOf="@id/tv_user"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.25" />
+
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="총 00 items"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

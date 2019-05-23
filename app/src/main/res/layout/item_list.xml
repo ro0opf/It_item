@@ -10,40 +10,72 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="20dp">
+
+        <View
+            android:id="@+id/v_body"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.88" />
+
+
+        <View
+            android:id="@+id/v_iv_top"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            app:layout_constraintBottom_toBottomOf="@id/v_header" />
+
         <ImageView
             android:id="@+id/iv_image"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            app:layout_constraintWidth_percent="0.88"
-            app:layout_constraintWidth_default="percent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/v_body"
+            app:layout_constraintEnd_toEndOf="@id/v_body"
+            app:layout_constraintStart_toStartOf="@id/v_body"
+            app:layout_constraintTop_toTopOf="@id/v_iv_top" />
+
+
+        <View
+            android:id="@+id/v_header"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/main_list_rounded_square"
+            android:backgroundTint="@color/colorWhite"
+            app:layout_constraintDimensionRatio="1:0.27"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintDimensionRatio="1:1"/>
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.88" />
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="솰라솰라"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:textColor="@color/colorWhite"
-            app:layout_constraintTop_toTopOf="@id/iv_image"
-            app:layout_constraintEnd_toEndOf="@id/iv_image"/>
+            android:text="솰라솰라"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/v_header"
+            app:layout_constraintTop_toTopOf="@id/v_header" />
 
         <TextView
             android:id="@+id/tv_tags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="솰라솰라"
-            android:layout_marginBottom="20dp"
             android:layout_marginStart="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="솰라솰라"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="@id/iv_image"
-            app:layout_constraintStart_toStartOf="@id/iv_image"/>
-
+            app:layout_constraintStart_toStartOf="@id/iv_image" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

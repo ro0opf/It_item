@@ -15,4 +15,6 @@
     <color name="colorBoundery">#D6D6D6</color>
     <color name="colorConfigBackground">#E65F5F</color>
     <color name="colorCityTab">#FFD6D6</color>
+    <color name="colorMypageToolbar">#E85E6B</color>
+    <color name="colorMyDialog">#57000000</color>
 </resources>

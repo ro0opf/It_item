@@ -30,8 +30,10 @@
         <activity android:name=".ui.interest.InterestActivity"/>
         <activity android:name=".ui.main.MainActivity" />
         <activity android:name=".ui.main.ConfigActivity"  android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-        <activity android:name=".ui.search.SearchCityActivity" />
+        <activity android:name=".ui.search.SearchCityActivity"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity android:name=".ui.search.SearchCategoryActivity" />
+        <activity android:name=".ui.mypage.MyPageActivity"/>
 
     </application>
 

@@ -5,9 +5,7 @@ import com.google.gson.GsonBuilder;
 
 import java.security.cert.CertificateException;
 
-import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
@@ -26,7 +24,7 @@ public final class ServiceGenerator {
 
     private static OkHttpClient.Builder getUnsafeOkHttpClient() {
         try {
-            final TrustManager[] trustAllCerts = new TrustManager[] {
+            final TrustManager[] trustAllCerts = new TrustManager[]{
                     new X509TrustManager() {
                         @Override
                         public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
@@ -49,8 +47,10 @@ public final class ServiceGenerator {
             final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
 
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
-            builder.sslSocketFactory(sslSocketFactory, (X509TrustManager)trustAllCerts[0]);
-            builder.hostnameVerifier((hostname, session) -> {return true;});
+            builder.sslSocketFactory(sslSocketFactory, (X509TrustManager) trustAllCerts[0]);
+            builder.hostnameVerifier((hostname, session) -> {
+                return true;
+            });
             return builder;
         } catch (Exception e) {
             throw new RuntimeException(e);

@@ -1,6 +1,7 @@
 package com.w3m4.it_item.ui.main;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
@@ -10,6 +11,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.w3m4.it_item.R;
 import com.w3m4.it_item.data.Me;
 import com.w3m4.it_item.databinding.ActivityConfigBinding;
+import com.w3m4.it_item.ui.mypage.MyPageActivity;
 
 public class ConfigActivity extends Activity {
     private ActivityConfigBinding binding;
@@ -22,6 +24,15 @@ public class ConfigActivity extends Activity {
 
         initMainData();
         setResult(REQUEST_OK);
+        initClickListener();
+
+    }
+
+    private void initClickListener() {
+        binding.vMypage.setOnClickListener(v-> {
+            startActivity(new Intent(getApplicationContext(), MyPageActivity.class));
+            onBackPressed();
+        });
         binding.vOut.setOnClickListener(v -> {
             onBackPressed();
         });

@@ -59,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
         categoryAdapter.addItem(new Category(R.drawable.ic_food, "FOOD"));
         categoryAdapter.addItem(new Category(R.drawable.ic_cosmetics, "COSMETIC"));
         categoryAdapter.addItem(new Category(R.drawable.ic_pharmacy, "PHARMACY"));
-        categoryAdapter.addItem(new Category(R.drawable.ic_robot, "ROBOT"));
-        categoryAdapter.addItem(new Category(R.drawable.ic_cat, "CAT"));
+        categoryAdapter.addItem(new Category(R.drawable.ic_supplements, "SUPPLEMENT"));
+        categoryAdapter.addItem(new Category(R.drawable.ic_stationary, "STATIONARY"));
     }
 
     private void initCategoryRcv(RecyclerView rcv) {
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fetchListData() {
-        disposable.add(ListRepo.getInstance().getList("hyyyyjin")
+        disposable.add(ListRepo.getInstance().getList(Me.getInstance().getId())
                 .subscribe(data -> {
                             listAdapter.setItems(data.getLists());
                         }, e -> {

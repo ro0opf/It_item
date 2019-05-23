@@ -63,7 +63,6 @@ public class InterestActivity extends AppCompatActivity {
     }
 
     private void fetchCityData() {
-        // TODO: 서버에서 도시/카테고리  데이터 가져와서 쪼로록 넣도록 변경할까요?
         cityAdatper.addItem(new City(R.drawable.tokyo_thumb, "도쿄"));
         cityAdatper.addItem(new City(R.drawable.osaka_thumb, "오사카"));
         cityAdatper.addItem(new City(R.drawable.sapporo_thumb, "삿포로"));
@@ -76,8 +75,8 @@ public class InterestActivity extends AppCompatActivity {
         categoryAdapter.addItem(new Category("category00", "식품", R.drawable.ic_food));
         categoryAdapter.addItem(new Category("category01", "과자", R.drawable.ic_snack));
         categoryAdapter.addItem(new Category("category02", "약품", R.drawable.ic_pharmacy));
-        categoryAdapter.addItem(new Category("category03", "건강보조제", R.drawable.ic_cat));
+        categoryAdapter.addItem(new Category("category03", "건강보조제", R.drawable.ic_supplements));
         categoryAdapter.addItem(new Category("category04", "뷰티", R.drawable.ic_cosmetics));
-        categoryAdapter.addItem(new Category("category05", "토이", R.drawable.ic_robot));
+        categoryAdapter.addItem(new Category("category05", "문구류", R.drawable.ic_stationary));
     }
 }

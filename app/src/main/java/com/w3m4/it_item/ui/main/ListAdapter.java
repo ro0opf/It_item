@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
-import com.w3m4.it_item.R;
 import com.w3m4.it_item.common.BaseRecyclerViewAdapter;
 import com.w3m4.it_item.data.mList;
 import com.w3m4.it_item.databinding.ItemListBinding;
@@ -27,7 +26,7 @@ public class ListAdapter extends BaseRecyclerViewAdapter<mList, ListAdapter.View
     @Override
     public void onBindView(ListAdapter.ViewHolder holder, int position) {
         holder.binding.tvTitle.setText(getItem(position).getTitle());
-        requestManager.load(R.drawable.ic_city_kyoto)
+        requestManager.load(getItem(position).getListThumbnailUrl())
                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(55)))
                 .into(holder.binding.ivImage);
     }

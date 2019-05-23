@@ -50,6 +50,21 @@ public class CityAdapter extends BaseRecyclerViewAdapter<City, CityAdapter.ViewH
                 city.setSelected(true);
             }
         });
+
+//        ViewGroup.LayoutParams layoutParams=holder.binding.clMain.getLayoutParams();
+//        ViewGroup parent=(ViewGroup)holder.binding.clMain.getParent();
+//        layoutParams.height=(int)(parent.getHeight()*0.5);
+//        holder.binding.clMain.setLayoutParams(layoutParams);
+//
+//
+//
+////        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+////        View itemView = inflater.inflate(R.layout.item_category, parent, false);
+////
+////        ViewGroup.LayoutParams layoutParams = itemView.getLayoutParams();
+////        layoutParams.height = (int) (parent.getHeight() * 0.5);
+////        itemView.setLayoutParams(layoutParams);
+
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

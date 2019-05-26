@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/v_bg"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:0.35"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.28"
+            tools:src="@drawable/main_background" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="시로이코이비토"
+            android:maxLength="17"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintStart_toEndOf="@id/iv_image"
+            app:layout_constraintTop_toTopOf="@id/iv_image" />
+
+        <TextView
+            android:id="@+id/tv_title_japan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시로이코이비토"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintStart_toStartOf="@id/tv_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+        <TextView
+            android:id="@+id/tv_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLength="17"
+            android:text="솰라솰라 어쩌구 저쩌구"
+            android:textColor="@color/colorFaintBlack"
+            app:layout_constraintStart_toStartOf="@id/tv_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_japan" />
+
+        <TextView
+            android:id="@+id/tv_hashTag1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:background="@drawable/tag_rounded_square"
+            android:paddingEnd="5dp"
+            android:text="# 태그"
+            android:textSize="12sp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorMain"
+            app:layout_constraintStart_toStartOf="@id/tv_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_detail" />
+
+        <TextView
+            android:id="@+id/tv_hashTag2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:background="@drawable/tag_rounded_square"
+            android:paddingEnd="5dp"
+            android:text="# 태그"
+            android:textSize="12sp"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/colorMain"
+            app:layout_constraintStart_toEndOf="@id/tv_hashTag1"
+            app:layout_constraintTop_toTopOf="@id/tv_hashTag1" />
+
+        <TextView
+            android:id="@+id/tv_hashTag3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:background="@drawable/tag_rounded_square"
+            android:paddingEnd="5dp"
+            android:text="# 태그"
+            android:textSize="12sp"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/colorMain"
+            app:layout_constraintStart_toEndOf="@id/tv_hashTag2"
+            app:layout_constraintTop_toTopOf="@id/tv_hashTag1" />
+
+        <ImageView
+            android:id="@+id/iv_heart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_hashTag1"
+            app:layout_constraintStart_toStartOf="@id/tv_hashTag1"
+            android:background="@drawable/ic_heart"/>
+
+
+        <TextView
+            android:id="@+id/tv_heart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="164"
+            android:textSize="12sp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintTop_toTopOf="@id/iv_heart"
+            app:layout_constraintBottom_toBottomOf="@id/iv_heart"
+            app:layout_constraintStart_toEndOf="@id/iv_heart"/>
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/ic_close_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

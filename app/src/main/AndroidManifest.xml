@@ -28,11 +28,12 @@
         <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.signup.SignUpActivity"/>
         <activity android:name=".ui.main.MainActivity" />
-        <activity android:name=".ui.main.ConfigActivity"  android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name=".ui.main.ConfigActivity"  android:theme="@style/CustomDialogTheme"/>
         <activity android:name=".ui.search.SearchCityActivity"
             android:windowSoftInputMode="adjustNothing"/>
         <activity android:name=".ui.search.SearchCategoryActivity" />
         <activity android:name=".ui.mypage.MyPageActivity"/>
+        <activity android:name=".ui.itemlist.ListItemActivity"/>
 
     </application>
 

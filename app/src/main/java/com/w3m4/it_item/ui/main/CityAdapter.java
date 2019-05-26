@@ -46,8 +46,14 @@ public class CityAdapter extends BaseRecyclerViewAdapter<City, CityAdapter.ViewH
         requestManager = Glide.with(parent.getContext());
         ViewHolder viewHolder = new ViewHolder(binding);
         viewHolder.binding.clMain.setOnClickListener(v->{
+
+            Intent i = new Intent(parent.getContext(), SearchCityActivity.class);
             if(viewHolder.getAdapterPosition() == 0){
-                parent.getContext().startActivity(new Intent(parent.getContext(), SearchCityActivity.class));
+                i.putExtra("city", "error");
+                parent.getContext().startActivity(i);
+            }else{
+                i.putExtra("city", getItem(viewHolder.getAdapterPosition()).getName());
+                parent.getContext().startActivity(i);
             }
         });
         return viewHolder;

@@ -22,10 +22,9 @@ public class ConfigActivity extends Activity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_config);
 
-        initMainData();
         setResult(REQUEST_OK);
+        initMainData();
         initClickListener();
-
     }
 
     private void initClickListener() {

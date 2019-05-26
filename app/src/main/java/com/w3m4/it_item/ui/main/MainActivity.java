@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     private void initCategoryRcv(RecyclerView rcv) {
         categoryAdapter = new CategoryAdapter(new ArrayList<>());
         rcv.setHasFixedSize(true);
-        rcv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false){
+        rcv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false) {
             @Override
             public boolean canScrollVertically() {
                 return false;
@@ -77,18 +77,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void fetchCityData() {
         cityAdapter.addItem(new City(R.drawable.ic_city_tokyo, "Dummy"));
-        cityAdapter.addItem(new City(R.drawable.ic_city_osaka, "OSAKA"));
-        cityAdapter.addItem(new City(R.drawable.ic_city_tokyo, "TOKYO"));
-        cityAdapter.addItem(new City(R.drawable.ic_city_hokkaido, "HOKKAIDO"));
-        cityAdapter.addItem(new City(R.drawable.ic_city_kyusu, "KYUSHU"));
-        cityAdapter.addItem(new City(R.drawable.ic_city_okinawa, "OKINAWA"));
-        cityAdapter.addItem(new City(R.drawable.ic_city_kyoto, "KYOTO"));
+        cityAdapter.addItem(new City(R.drawable.ic_city_osaka, "Osaka"));
+        cityAdapter.addItem(new City(R.drawable.ic_city_tokyo, "Tokyo"));
+        cityAdapter.addItem(new City(R.drawable.ic_city_hokkaido, "Hokkaido"));
+        cityAdapter.addItem(new City(R.drawable.ic_city_kyusu, "Kyusu"));
+        cityAdapter.addItem(new City(R.drawable.ic_city_okinawa, "Okinawa"));
+        cityAdapter.addItem(new City(R.drawable.ic_city_kyoto, "Kyoto"));
     }
 
     private void initCityRcv(RecyclerView rcv) {
         cityAdapter = new CityAdapter(new ArrayList<>());
         rcv.setHasFixedSize(true);
-        rcv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false){
+        rcv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false) {
             @Override
             public boolean canScrollVertically() {
                 return false;
@@ -104,11 +104,30 @@ public class MainActivity extends AppCompatActivity {
             binding.vItem2.setVisibility(View.INVISIBLE);
             binding.vCity.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorWhite)));
         });
+
         binding.vItem.setOnClickListener(v -> {
             binding.rcvCity.setVisibility(View.INVISIBLE);
             binding.rcvCategory.setVisibility(View.VISIBLE);
             binding.vItem2.setVisibility(View.VISIBLE);
             binding.vCity.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorFaintMain)));
+        });
+
+        binding.ivMenu.setOnClickListener(v -> {
+            binding.vAct.setVisibility(View.VISIBLE);
+            startActivityForResult(new Intent(getApplicationContext(), ConfigActivity.class), REQUEST_ACT);
+            overridePendingTransition(R.anim.slide_in_left, 0);
+        });
+
+        binding.ivHeaderMenu.setOnClickListener(v -> {
+            binding.vAct.setVisibility(View.VISIBLE);
+            startActivityForResult(new Intent(getApplicationContext(), ConfigActivity.class), REQUEST_ACT);
+            overridePendingTransition(R.anim.slide_in_left, 0);
+        });
+
+        binding.ivHeaderSearch.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), SearchCityActivity.class);
+            i.putExtra("city", "error");
+            startActivity(i);
         });
     }
 
@@ -141,29 +160,13 @@ public class MainActivity extends AppCompatActivity {
                 flag = false;
             }
         });
-
-        binding.ivMenu.setOnClickListener(v -> {
-            binding.vAct.setVisibility(View.VISIBLE);
-            startActivityForResult(new Intent(getApplicationContext(), ConfigActivity.class), REQUEST_ACT);
-            overridePendingTransition(R.anim.slide_in_left, 0);
-        });
-
-        binding.ivHeaderMenu.setOnClickListener(v -> {
-            binding.vAct.setVisibility(View.VISIBLE);
-            startActivityForResult(new Intent(getApplicationContext(), ConfigActivity.class), REQUEST_ACT);
-            overridePendingTransition(R.anim.slide_in_left, 0);
-        });
-
-        binding.ivHeaderSearch.setOnClickListener(v->{
-            startActivity(new Intent(getApplicationContext(), SearchCityActivity.class));
-        });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_ACT){
-            if(resultCode == REQUEST_OK){
+        if (requestCode == REQUEST_ACT) {
+            if (resultCode == REQUEST_OK) {
                 binding.vAct.setVisibility(View.INVISIBLE);
             }
         }

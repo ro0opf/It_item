@@ -19,8 +19,8 @@ import com.w3m4.it_item.R;
 import com.w3m4.it_item.data.Me;
 import com.w3m4.it_item.data.UserDegree;
 import com.w3m4.it_item.databinding.ActivityLoginBinding;
-import com.w3m4.it_item.ui.signup.SignUpActivity;
 import com.w3m4.it_item.ui.main.MainActivity;
+import com.w3m4.it_item.ui.signup.SignUpActivity;
 
 import java.util.ArrayList;
 import java.util.List;

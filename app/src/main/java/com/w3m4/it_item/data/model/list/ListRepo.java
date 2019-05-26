@@ -1,5 +1,6 @@
 package com.w3m4.it_item.data.model.list;
 
+import com.google.gson.JsonObject;
 import com.w3m4.it_item.data.mLists;
 import com.w3m4.it_item.data.model.ServiceGenerator;
 
@@ -24,8 +25,20 @@ public class ListRepo {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Single<mLists> getCityList(String userId){
-        return service.getCityList(userId)
+    public Single<mLists> getCityList(String city){
+        return service.getCityList(city)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Single<mLists> getMyList(String userId){
+        return service.getMyList(userId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Single<JsonObject> addMyList(JsonObject jsonObject){
+        return service.addMyList(jsonObject)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

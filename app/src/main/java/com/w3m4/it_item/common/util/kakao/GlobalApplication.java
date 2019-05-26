@@ -18,6 +18,7 @@ public class GlobalApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+
         KakaoSDK.init(new KakaoSDKAdapter());
     }
 
